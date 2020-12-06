@@ -1,0 +1,19 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - graphql/**
+    builders:
+      artemis:
+        options:
+          custom_parser_import: 'package:requests/common/converters/graphql_converters.dart'
+          scalar_mapping:
+            - graphql_type: DateTime
+              dart_type: DateTime
+              use_custom_parser: true
+          fragments_glob: graphql/fragments/common.graphql
+          schema_mapping:
+            - schema: graphql/schema.graphql
+              queries_glob: graphql/queries/*.graphql
+              output: lib/models/graphql/graphql_api.dart
+              naming_scheme: pathedWithFields
