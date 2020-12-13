@@ -14,14 +14,35 @@ class GraphqlApi$Query$Requests with EquatableMixin {
   factory GraphqlApi$Query$Requests.fromJson(Map<String, dynamic> json) =>
       _$GraphqlApi$Query$RequestsFromJson(json);
 
-  int status;
+  @JsonKey(unknownEnumValue: Status.artemisUnknown)
+  Status status;
 
   String title;
 
+  String description;
+
   DateTime creationDate;
 
+  @JsonKey(unknownEnumValue: Priority.artemisUnknown)
+  Priority priority;
+
+  DateTime lastModified;
+
+  DateTime dueDate;
+
+  double timeEstimation;
+
   @override
-  List<Object> get props => [status, title, creationDate];
+  List<Object> get props => [
+        status,
+        title,
+        description,
+        creationDate,
+        priority,
+        lastModified,
+        dueDate,
+        timeEstimation
+      ];
   Map<String, dynamic> toJson() => _$GraphqlApi$Query$RequestsToJson(this);
 }
 
@@ -47,7 +68,8 @@ class NewRequest$Mutation$CreateRequest with EquatableMixin {
           Map<String, dynamic> json) =>
       _$NewRequest$Mutation$CreateRequestFromJson(json);
 
-  int status;
+  @JsonKey(unknownEnumValue: Status.artemisUnknown)
+  Status status;
 
   String title;
 
@@ -89,7 +111,8 @@ class RequestInput with EquatableMixin {
   factory RequestInput.fromJson(Map<String, dynamic> json) =>
       _$RequestInputFromJson(json);
 
-  int status;
+  @JsonKey(unknownEnumValue: Status.artemisUnknown)
+  Status status;
 
   String title;
 
@@ -106,7 +129,7 @@ class RequestInput with EquatableMixin {
 
   DateTime dueDate;
 
-  int timeEstimation;
+  double timeEstimation;
 
   @override
   List<Object> get props => [
@@ -123,6 +146,18 @@ class RequestInput with EquatableMixin {
   Map<String, dynamic> toJson() => _$RequestInputToJson(this);
 }
 
+enum Status {
+  @JsonValue('NEW')
+  kw$NEW,
+  @JsonValue('WORKING')
+  working,
+  @JsonValue('DONE')
+  done,
+  @JsonValue('REJECTED')
+  rejected,
+  @JsonValue('ARTEMIS_UNKNOWN')
+  artemisUnknown,
+}
 enum Priority {
   @JsonValue('LOW')
   low,
@@ -164,7 +199,37 @@ class GraphqlApiQuery extends GraphQLQuery<GraphqlApi$Query, JsonSerializable> {
                     directives: [],
                     selectionSet: null),
                 FieldNode(
+                    name: NameNode(value: 'description'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
                     name: NameNode(value: 'creationDate'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'priority'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'lastModified'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'dueDate'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'timeEstimation'),
                     alias: null,
                     arguments: [],
                     directives: [],
