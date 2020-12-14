@@ -15,7 +15,7 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
     print(event);
 
     yield event.map(
-      save: (val) => state,
+      save: (val) => RequestFormState.saved(state.req),
       changeEstimation: (ChangeEstimation value) =>
           RequestFormState.timeEstimationChanged(
               state.req.copyWith(timeEstimation: value.hours)),

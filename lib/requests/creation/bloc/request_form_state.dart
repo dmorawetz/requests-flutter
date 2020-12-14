@@ -18,4 +18,5 @@ abstract class RequestFormState with _$RequestFormState {
   const factory RequestFormState.imagesChanged(RequestModel req) =
       ImagesChanged;
   const factory RequestFormState.audioChanged(RequestModel req) = AudioChanged;
+  const factory RequestFormState.saved(RequestModel req) = Saved;
 }

@@ -68,6 +68,13 @@ class _$RequestFormStateTearOff {
       req,
     );
   }
+
+// ignore: unused_element
+  Saved saved(RequestModel req) {
+    return Saved(
+      req,
+    );
+  }
 }
 
 /// @nodoc
@@ -88,6 +95,7 @@ mixin _$RequestFormState {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -99,6 +107,7 @@ mixin _$RequestFormState {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -111,6 +120,7 @@ mixin _$RequestFormState {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -122,6 +132,7 @@ mixin _$RequestFormState {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   });
 
@@ -240,6 +251,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -249,6 +261,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return initial(req);
   }
 
@@ -263,6 +276,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -283,6 +297,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -292,6 +307,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return initial(this);
   }
 
@@ -306,6 +322,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -398,6 +415,7 @@ class _$NameChanged implements NameChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -407,6 +425,7 @@ class _$NameChanged implements NameChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return nameChanged(req);
   }
 
@@ -421,6 +440,7 @@ class _$NameChanged implements NameChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -441,6 +461,7 @@ class _$NameChanged implements NameChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -450,6 +471,7 @@ class _$NameChanged implements NameChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return nameChanged(this);
   }
 
@@ -464,6 +486,7 @@ class _$NameChanged implements NameChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -556,6 +579,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -565,6 +589,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return descriptionChanged(req);
   }
 
@@ -579,6 +604,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -599,6 +625,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -608,6 +635,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return descriptionChanged(this);
   }
 
@@ -622,6 +650,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -714,6 +743,7 @@ class _$DateChanged implements DateChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -723,6 +753,7 @@ class _$DateChanged implements DateChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return dateChanged(req);
   }
 
@@ -737,6 +768,7 @@ class _$DateChanged implements DateChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -757,6 +789,7 @@ class _$DateChanged implements DateChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -766,6 +799,7 @@ class _$DateChanged implements DateChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return dateChanged(this);
   }
 
@@ -780,6 +814,7 @@ class _$DateChanged implements DateChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -872,6 +907,7 @@ class _$PriorityChanged implements PriorityChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -881,6 +917,7 @@ class _$PriorityChanged implements PriorityChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return priorityChanged(req);
   }
 
@@ -895,6 +932,7 @@ class _$PriorityChanged implements PriorityChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -915,6 +953,7 @@ class _$PriorityChanged implements PriorityChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -924,6 +963,7 @@ class _$PriorityChanged implements PriorityChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return priorityChanged(this);
   }
 
@@ -938,6 +978,7 @@ class _$PriorityChanged implements PriorityChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1031,6 +1072,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1040,6 +1082,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return timeEstimationChanged(req);
   }
 
@@ -1054,6 +1097,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1074,6 +1118,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1083,6 +1128,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return timeEstimationChanged(this);
   }
 
@@ -1097,6 +1143,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1190,6 +1237,7 @@ class _$ImagesChanged implements ImagesChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1199,6 +1247,7 @@ class _$ImagesChanged implements ImagesChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return imagesChanged(req);
   }
 
@@ -1213,6 +1262,7 @@ class _$ImagesChanged implements ImagesChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1233,6 +1283,7 @@ class _$ImagesChanged implements ImagesChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1242,6 +1293,7 @@ class _$ImagesChanged implements ImagesChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return imagesChanged(this);
   }
 
@@ -1256,6 +1308,7 @@ class _$ImagesChanged implements ImagesChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1348,6 +1401,7 @@ class _$AudioChanged implements AudioChanged {
     @required TResult timeEstimationChanged(RequestModel req),
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1357,6 +1411,7 @@ class _$AudioChanged implements AudioChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return audioChanged(req);
   }
 
@@ -1371,6 +1426,7 @@ class _$AudioChanged implements AudioChanged {
     TResult timeEstimationChanged(RequestModel req),
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1391,6 +1447,7 @@ class _$AudioChanged implements AudioChanged {
     @required TResult timeEstimationChanged(TimeEstimationChanged value),
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1400,6 +1457,7 @@ class _$AudioChanged implements AudioChanged {
     assert(timeEstimationChanged != null);
     assert(imagesChanged != null);
     assert(audioChanged != null);
+    assert(saved != null);
     return audioChanged(this);
   }
 
@@ -1414,6 +1472,7 @@ class _$AudioChanged implements AudioChanged {
     TResult timeEstimationChanged(TimeEstimationChanged value),
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1431,4 +1490,164 @@ abstract class AudioChanged implements RequestFormState {
   RequestModel get req;
   @override
   $AudioChangedCopyWith<AudioChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class $SavedCopyWith<$Res> implements $RequestFormStateCopyWith<$Res> {
+  factory $SavedCopyWith(Saved value, $Res Function(Saved) then) =
+      _$SavedCopyWithImpl<$Res>;
+  @override
+  $Res call({RequestModel req});
+
+  @override
+  $RequestModelCopyWith<$Res> get req;
+}
+
+/// @nodoc
+class _$SavedCopyWithImpl<$Res> extends _$RequestFormStateCopyWithImpl<$Res>
+    implements $SavedCopyWith<$Res> {
+  _$SavedCopyWithImpl(Saved _value, $Res Function(Saved) _then)
+      : super(_value, (v) => _then(v as Saved));
+
+  @override
+  Saved get _value => super._value as Saved;
+
+  @override
+  $Res call({
+    Object req = freezed,
+  }) {
+    return _then(Saved(
+      req == freezed ? _value.req : req as RequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+class _$Saved implements Saved {
+  const _$Saved(this.req) : assert(req != null);
+
+  @override
+  final RequestModel req;
+
+  @override
+  String toString() {
+    return 'RequestFormState.saved(req: $req)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Saved &&
+            (identical(other.req, req) ||
+                const DeepCollectionEquality().equals(other.req, req)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(req);
+
+  @override
+  $SavedCopyWith<Saved> get copyWith =>
+      _$SavedCopyWithImpl<Saved>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(RequestModel req),
+    @required TResult nameChanged(RequestModel req),
+    @required TResult descriptionChanged(RequestModel req),
+    @required TResult dateChanged(RequestModel req),
+    @required TResult priorityChanged(RequestModel req),
+    @required TResult timeEstimationChanged(RequestModel req),
+    @required TResult imagesChanged(RequestModel req),
+    @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    return saved(req);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(RequestModel req),
+    TResult nameChanged(RequestModel req),
+    TResult descriptionChanged(RequestModel req),
+    TResult dateChanged(RequestModel req),
+    TResult priorityChanged(RequestModel req),
+    TResult timeEstimationChanged(RequestModel req),
+    TResult imagesChanged(RequestModel req),
+    TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved(req);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(RequestFormInitial value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult descriptionChanged(DescriptionChanged value),
+    @required TResult dateChanged(DateChanged value),
+    @required TResult priorityChanged(PriorityChanged value),
+    @required TResult timeEstimationChanged(TimeEstimationChanged value),
+    @required TResult imagesChanged(ImagesChanged value),
+    @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    return saved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(RequestFormInitial value),
+    TResult nameChanged(NameChanged value),
+    TResult descriptionChanged(DescriptionChanged value),
+    TResult dateChanged(DateChanged value),
+    TResult priorityChanged(PriorityChanged value),
+    TResult timeEstimationChanged(TimeEstimationChanged value),
+    TResult imagesChanged(ImagesChanged value),
+    TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (saved != null) {
+      return saved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Saved implements RequestFormState {
+  const factory Saved(RequestModel req) = _$Saved;
+
+  @override
+  RequestModel get req;
+  @override
+  $SavedCopyWith<Saved> get copyWith;
 }

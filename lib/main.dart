@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GraphqlProvider(
       child: MaterialApp(
         title: 'Requests',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.pink,
           visualDensity: VisualDensity.adaptivePlatformDensity,

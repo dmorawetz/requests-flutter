@@ -9,7 +9,6 @@ import 'package:requests/requests/creation/bloc/request_form_event.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
 
 class RequestForm extends StatelessWidget {
-  final double _horizontalSpacing = 20;
   final TextEditingController dateController = TextEditingController();
 
   @override
@@ -18,10 +17,10 @@ class RequestForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 5,
+          height: kIsWeb ? 75 : 5,
         ),
         ListTile(
-          leading: Icon(Icons.person),
+          leading: Icon(Icons.flag),
           title: BlocBuilder<RequestFormBloc, RequestFormState>(
             buildWhen: (old, next) => next.maybeMap(
               nameChanged: (_) => true,
@@ -35,14 +34,62 @@ class RequestForm extends StatelessWidget {
               validator: requiredValidator,
               initialValue: state.req.creator,
               decoration: InputDecoration(
-                hintText: 'Name',
+                hintText: 'Title',
                 filled: kIsWeb,
                 border: InputBorder.none,
               ),
             ),
           ),
         ),
-        Divider(),
+        _Spacing(),
+        if (kIsWeb)
+          ListTile(
+            leading: Icon(Icons.person),
+            title: BlocBuilder<RequestFormBloc, RequestFormState>(
+              buildWhen: (old, next) => next.maybeMap(
+                nameChanged: (_) => true,
+                orElse: () => false,
+              ),
+              builder: (context, state) => TextFormField(
+                onChanged: (val) {
+                  BlocProvider.of<RequestFormBloc>(context)
+                      .add(RequestFormEvent.changeName(val));
+                },
+                validator: requiredValidator,
+                initialValue: state.req.creator,
+                decoration: InputDecoration(
+                  hintText: 'Your name',
+                  filled: kIsWeb,
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+        if (kIsWeb) _Spacing(),
+        if (kIsWeb)
+          ListTile(
+            leading: Icon(Icons.mail),
+            title: BlocBuilder<RequestFormBloc, RequestFormState>(
+              buildWhen: (old, next) => next.maybeMap(
+                nameChanged: (_) => true,
+                orElse: () => false,
+              ),
+              builder: (context, state) => TextFormField(
+                onChanged: (val) {
+                  BlocProvider.of<RequestFormBloc>(context)
+                      .add(RequestFormEvent.changeName(val));
+                },
+                validator: requiredValidator,
+                initialValue: state.req.creator,
+                decoration: InputDecoration(
+                  hintText: 'Your email',
+                  filled: kIsWeb,
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+        if (kIsWeb) _Spacing(),
         ListTile(
           leading: Icon(Icons.notes),
           title: BlocBuilder<RequestFormBloc, RequestFormState>(
@@ -66,7 +113,7 @@ class RequestForm extends StatelessWidget {
             ),
           ),
         ),
-        Divider(),
+        _Spacing(),
         ListTile(
           leading: Icon(Icons.date_range),
           onTap: () async {
@@ -106,7 +153,7 @@ class RequestForm extends StatelessWidget {
             },
           ),
         ),
-        Divider(),
+        _Spacing(),
         BlocBuilder<RequestFormBloc, RequestFormState>(
           buildWhen: (old, next) => next.maybeMap(
             priorityChanged: (_) => true,
@@ -135,7 +182,7 @@ class RequestForm extends StatelessWidget {
             },
           ),
         ),
-        Divider(),
+        _Spacing(),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text('Time estimation'),
@@ -144,16 +191,53 @@ class RequestForm extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: _TimeEstimation(),
         ),
-        Divider(),
+        _Spacing(
+          height: 20,
+        ),
         ListTile(
           leading: Icon(Icons.camera_alt),
           title: Text('Add image'),
+          onTap: () {},
         ),
-        Divider(),
+        _Spacing(),
         ListTile(
           leading: Icon(Icons.mic),
           title: Text('Add audio'),
+          onTap: () {},
         ),
+        SizedBox(
+          height: 25,
+        ),
+        if (kIsWeb)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: RaisedButton(
+              onPressed: () {
+                BlocProvider.of<RequestFormBloc>(context)
+                    .add(RequestFormEvent.save());
+              },
+              textTheme: ButtonTextTheme.primary,
+              color: Theme.of(context).primaryColor,
+              padding: EdgeInsets.all(18.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(Icons.send),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    'Save request',
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        .copyWith(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          )
       ],
     );
   }
@@ -193,3 +277,18 @@ class _TimeEstimation extends StatelessWidget {
 
 String requiredValidator(String value) =>
     value.isEmpty ? 'Please enter something.' : null;
+
+class _Spacing extends StatelessWidget {
+  final double height;
+
+  const _Spacing({Key key, this.height = 7}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return !kIsWeb
+        ? Divider()
+        : SizedBox(
+            height: height,
+          );
+  }
+}
