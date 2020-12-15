@@ -8,6 +8,26 @@ import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class GraphqlApi$Query$Requests$Creator with EquatableMixin {
+  GraphqlApi$Query$Requests$Creator();
+
+  factory GraphqlApi$Query$Requests$Creator.fromJson(
+          Map<String, dynamic> json) =>
+      _$GraphqlApi$Query$Requests$CreatorFromJson(json);
+
+  String firstname;
+
+  String lastname;
+
+  String email;
+
+  @override
+  List<Object> get props => [firstname, lastname, email];
+  Map<String, dynamic> toJson() =>
+      _$GraphqlApi$Query$Requests$CreatorToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class GraphqlApi$Query$Requests with EquatableMixin {
   GraphqlApi$Query$Requests();
 
@@ -18,6 +38,8 @@ class GraphqlApi$Query$Requests with EquatableMixin {
   Status status;
 
   String title;
+
+  GraphqlApi$Query$Requests$Creator creator;
 
   String description;
 
@@ -36,6 +58,7 @@ class GraphqlApi$Query$Requests with EquatableMixin {
   List<Object> get props => [
         status,
         title,
+        creator,
         description,
         creationDate,
         priority,
@@ -198,6 +221,31 @@ class GraphqlApiQuery extends GraphQLQuery<GraphqlApi$Query, JsonSerializable> {
                     arguments: [],
                     directives: [],
                     selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'creator'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'firstname'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'lastname'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'email'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ])),
                 FieldNode(
                     name: NameNode(value: 'description'),
                     alias: null,

@@ -3,6 +3,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/creation_page.dart';
+import 'package:requests/requests/overview/request_detail_page.dart';
 
 class RequestsListOverviewPage extends StatelessWidget {
   @override
@@ -59,6 +60,14 @@ class RequestsListOverviewPage extends StatelessWidget {
                       request.title,
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RequestDetailPage(
+                                    request: request,
+                                  )));
+                    },
                     leading: Icon(
                       request.status == Status.done
                           ? Icons.assignment_turned_in

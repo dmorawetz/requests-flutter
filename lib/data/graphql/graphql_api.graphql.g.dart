@@ -6,12 +6,32 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+GraphqlApi$Query$Requests$Creator _$GraphqlApi$Query$Requests$CreatorFromJson(
+    Map<String, dynamic> json) {
+  return GraphqlApi$Query$Requests$Creator()
+    ..firstname = json['firstname'] as String
+    ..lastname = json['lastname'] as String
+    ..email = json['email'] as String;
+}
+
+Map<String, dynamic> _$GraphqlApi$Query$Requests$CreatorToJson(
+        GraphqlApi$Query$Requests$Creator instance) =>
+    <String, dynamic>{
+      'firstname': instance.firstname,
+      'lastname': instance.lastname,
+      'email': instance.email,
+    };
+
 GraphqlApi$Query$Requests _$GraphqlApi$Query$RequestsFromJson(
     Map<String, dynamic> json) {
   return GraphqlApi$Query$Requests()
     ..status = _$enumDecodeNullable(_$StatusEnumMap, json['status'],
         unknownValue: Status.artemisUnknown)
     ..title = json['title'] as String
+    ..creator = json['creator'] == null
+        ? null
+        : GraphqlApi$Query$Requests$Creator.fromJson(
+            json['creator'] as Map<String, dynamic>)
     ..description = json['description'] as String
     ..creationDate = json['creationDate'] == null
         ? null
@@ -32,6 +52,7 @@ Map<String, dynamic> _$GraphqlApi$Query$RequestsToJson(
     <String, dynamic>{
       'status': _$StatusEnumMap[instance.status],
       'title': instance.title,
+      'creator': instance.creator?.toJson(),
       'description': instance.description,
       'creationDate': instance.creationDate?.toIso8601String(),
       'priority': _$PriorityEnumMap[instance.priority],
