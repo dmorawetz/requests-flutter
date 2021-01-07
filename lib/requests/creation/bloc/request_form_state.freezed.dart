@@ -75,6 +75,14 @@ class _$RequestFormStateTearOff {
       req,
     );
   }
+
+// ignore: unused_element
+  RequestFormStateError error(RequestModel req, String msg) {
+    return RequestFormStateError(
+      req,
+      msg,
+    );
+  }
 }
 
 /// @nodoc
@@ -96,6 +104,7 @@ mixin _$RequestFormState {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -108,6 +117,7 @@ mixin _$RequestFormState {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -121,6 +131,7 @@ mixin _$RequestFormState {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -133,6 +144,7 @@ mixin _$RequestFormState {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   });
 
@@ -213,8 +225,10 @@ class _$RequestFormInitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$RequestFormInitial implements RequestFormInitial {
-  const _$RequestFormInitial(this.req) : assert(req != null);
+class _$RequestFormInitial extends RequestFormInitial {
+  const _$RequestFormInitial(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -252,6 +266,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -262,6 +277,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return initial(req);
   }
 
@@ -277,6 +293,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -298,6 +315,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -308,6 +326,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return initial(this);
   }
 
@@ -323,6 +342,7 @@ class _$RequestFormInitial implements RequestFormInitial {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -333,7 +353,8 @@ class _$RequestFormInitial implements RequestFormInitial {
   }
 }
 
-abstract class RequestFormInitial implements RequestFormState {
+abstract class RequestFormInitial extends RequestFormState {
+  const RequestFormInitial._() : super._();
   const factory RequestFormInitial(RequestModel req) = _$RequestFormInitial;
 
   @override
@@ -377,8 +398,10 @@ class _$NameChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$NameChanged implements NameChanged {
-  const _$NameChanged(this.req) : assert(req != null);
+class _$NameChanged extends NameChanged {
+  const _$NameChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -416,6 +439,7 @@ class _$NameChanged implements NameChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -426,6 +450,7 @@ class _$NameChanged implements NameChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return nameChanged(req);
   }
 
@@ -441,6 +466,7 @@ class _$NameChanged implements NameChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -462,6 +488,7 @@ class _$NameChanged implements NameChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -472,6 +499,7 @@ class _$NameChanged implements NameChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return nameChanged(this);
   }
 
@@ -487,6 +515,7 @@ class _$NameChanged implements NameChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -497,7 +526,8 @@ class _$NameChanged implements NameChanged {
   }
 }
 
-abstract class NameChanged implements RequestFormState {
+abstract class NameChanged extends RequestFormState {
+  const NameChanged._() : super._();
   const factory NameChanged(RequestModel req) = _$NameChanged;
 
   @override
@@ -541,8 +571,10 @@ class _$DescriptionChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$DescriptionChanged implements DescriptionChanged {
-  const _$DescriptionChanged(this.req) : assert(req != null);
+class _$DescriptionChanged extends DescriptionChanged {
+  const _$DescriptionChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -580,6 +612,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -590,6 +623,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return descriptionChanged(req);
   }
 
@@ -605,6 +639,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -626,6 +661,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -636,6 +672,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return descriptionChanged(this);
   }
 
@@ -651,6 +688,7 @@ class _$DescriptionChanged implements DescriptionChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -661,7 +699,8 @@ class _$DescriptionChanged implements DescriptionChanged {
   }
 }
 
-abstract class DescriptionChanged implements RequestFormState {
+abstract class DescriptionChanged extends RequestFormState {
+  const DescriptionChanged._() : super._();
   const factory DescriptionChanged(RequestModel req) = _$DescriptionChanged;
 
   @override
@@ -705,8 +744,10 @@ class _$DateChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$DateChanged implements DateChanged {
-  const _$DateChanged(this.req) : assert(req != null);
+class _$DateChanged extends DateChanged {
+  const _$DateChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -744,6 +785,7 @@ class _$DateChanged implements DateChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -754,6 +796,7 @@ class _$DateChanged implements DateChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return dateChanged(req);
   }
 
@@ -769,6 +812,7 @@ class _$DateChanged implements DateChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -790,6 +834,7 @@ class _$DateChanged implements DateChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -800,6 +845,7 @@ class _$DateChanged implements DateChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return dateChanged(this);
   }
 
@@ -815,6 +861,7 @@ class _$DateChanged implements DateChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -825,7 +872,8 @@ class _$DateChanged implements DateChanged {
   }
 }
 
-abstract class DateChanged implements RequestFormState {
+abstract class DateChanged extends RequestFormState {
+  const DateChanged._() : super._();
   const factory DateChanged(RequestModel req) = _$DateChanged;
 
   @override
@@ -869,8 +917,10 @@ class _$PriorityChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$PriorityChanged implements PriorityChanged {
-  const _$PriorityChanged(this.req) : assert(req != null);
+class _$PriorityChanged extends PriorityChanged {
+  const _$PriorityChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -908,6 +958,7 @@ class _$PriorityChanged implements PriorityChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -918,6 +969,7 @@ class _$PriorityChanged implements PriorityChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return priorityChanged(req);
   }
 
@@ -933,6 +985,7 @@ class _$PriorityChanged implements PriorityChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -954,6 +1007,7 @@ class _$PriorityChanged implements PriorityChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -964,6 +1018,7 @@ class _$PriorityChanged implements PriorityChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return priorityChanged(this);
   }
 
@@ -979,6 +1034,7 @@ class _$PriorityChanged implements PriorityChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -989,7 +1045,8 @@ class _$PriorityChanged implements PriorityChanged {
   }
 }
 
-abstract class PriorityChanged implements RequestFormState {
+abstract class PriorityChanged extends RequestFormState {
+  const PriorityChanged._() : super._();
   const factory PriorityChanged(RequestModel req) = _$PriorityChanged;
 
   @override
@@ -1033,8 +1090,10 @@ class _$TimeEstimationChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$TimeEstimationChanged implements TimeEstimationChanged {
-  const _$TimeEstimationChanged(this.req) : assert(req != null);
+class _$TimeEstimationChanged extends TimeEstimationChanged {
+  const _$TimeEstimationChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -1073,6 +1132,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1083,6 +1143,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return timeEstimationChanged(req);
   }
 
@@ -1098,6 +1159,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1119,6 +1181,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1129,6 +1192,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return timeEstimationChanged(this);
   }
 
@@ -1144,6 +1208,7 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1154,7 +1219,8 @@ class _$TimeEstimationChanged implements TimeEstimationChanged {
   }
 }
 
-abstract class TimeEstimationChanged implements RequestFormState {
+abstract class TimeEstimationChanged extends RequestFormState {
+  const TimeEstimationChanged._() : super._();
   const factory TimeEstimationChanged(RequestModel req) =
       _$TimeEstimationChanged;
 
@@ -1199,8 +1265,10 @@ class _$ImagesChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ImagesChanged implements ImagesChanged {
-  const _$ImagesChanged(this.req) : assert(req != null);
+class _$ImagesChanged extends ImagesChanged {
+  const _$ImagesChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -1238,6 +1306,7 @@ class _$ImagesChanged implements ImagesChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1248,6 +1317,7 @@ class _$ImagesChanged implements ImagesChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return imagesChanged(req);
   }
 
@@ -1263,6 +1333,7 @@ class _$ImagesChanged implements ImagesChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1284,6 +1355,7 @@ class _$ImagesChanged implements ImagesChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1294,6 +1366,7 @@ class _$ImagesChanged implements ImagesChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return imagesChanged(this);
   }
 
@@ -1309,6 +1382,7 @@ class _$ImagesChanged implements ImagesChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1319,7 +1393,8 @@ class _$ImagesChanged implements ImagesChanged {
   }
 }
 
-abstract class ImagesChanged implements RequestFormState {
+abstract class ImagesChanged extends RequestFormState {
+  const ImagesChanged._() : super._();
   const factory ImagesChanged(RequestModel req) = _$ImagesChanged;
 
   @override
@@ -1363,8 +1438,10 @@ class _$AudioChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$AudioChanged implements AudioChanged {
-  const _$AudioChanged(this.req) : assert(req != null);
+class _$AudioChanged extends AudioChanged {
+  const _$AudioChanged(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -1402,6 +1479,7 @@ class _$AudioChanged implements AudioChanged {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1412,6 +1490,7 @@ class _$AudioChanged implements AudioChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return audioChanged(req);
   }
 
@@ -1427,6 +1506,7 @@ class _$AudioChanged implements AudioChanged {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1448,6 +1528,7 @@ class _$AudioChanged implements AudioChanged {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1458,6 +1539,7 @@ class _$AudioChanged implements AudioChanged {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return audioChanged(this);
   }
 
@@ -1473,6 +1555,7 @@ class _$AudioChanged implements AudioChanged {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1483,7 +1566,8 @@ class _$AudioChanged implements AudioChanged {
   }
 }
 
-abstract class AudioChanged implements RequestFormState {
+abstract class AudioChanged extends RequestFormState {
+  const AudioChanged._() : super._();
   const factory AudioChanged(RequestModel req) = _$AudioChanged;
 
   @override
@@ -1523,8 +1607,10 @@ class _$SavedCopyWithImpl<$Res> extends _$RequestFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$Saved implements Saved {
-  const _$Saved(this.req) : assert(req != null);
+class _$Saved extends Saved {
+  const _$Saved(this.req)
+      : assert(req != null),
+        super._();
 
   @override
   final RequestModel req;
@@ -1562,6 +1648,7 @@ class _$Saved implements Saved {
     @required TResult imagesChanged(RequestModel req),
     @required TResult audioChanged(RequestModel req),
     @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1572,6 +1659,7 @@ class _$Saved implements Saved {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return saved(req);
   }
 
@@ -1587,6 +1675,7 @@ class _$Saved implements Saved {
     TResult imagesChanged(RequestModel req),
     TResult audioChanged(RequestModel req),
     TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1608,6 +1697,7 @@ class _$Saved implements Saved {
     @required TResult imagesChanged(ImagesChanged value),
     @required TResult audioChanged(AudioChanged value),
     @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
   }) {
     assert(initial != null);
     assert(nameChanged != null);
@@ -1618,6 +1708,7 @@ class _$Saved implements Saved {
     assert(imagesChanged != null);
     assert(audioChanged != null);
     assert(saved != null);
+    assert(error != null);
     return saved(this);
   }
 
@@ -1633,6 +1724,7 @@ class _$Saved implements Saved {
     TResult imagesChanged(ImagesChanged value),
     TResult audioChanged(AudioChanged value),
     TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1643,11 +1735,197 @@ class _$Saved implements Saved {
   }
 }
 
-abstract class Saved implements RequestFormState {
+abstract class Saved extends RequestFormState {
+  const Saved._() : super._();
   const factory Saved(RequestModel req) = _$Saved;
 
   @override
   RequestModel get req;
   @override
   $SavedCopyWith<Saved> get copyWith;
+}
+
+/// @nodoc
+abstract class $RequestFormStateErrorCopyWith<$Res>
+    implements $RequestFormStateCopyWith<$Res> {
+  factory $RequestFormStateErrorCopyWith(RequestFormStateError value,
+          $Res Function(RequestFormStateError) then) =
+      _$RequestFormStateErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({RequestModel req, String msg});
+
+  @override
+  $RequestModelCopyWith<$Res> get req;
+}
+
+/// @nodoc
+class _$RequestFormStateErrorCopyWithImpl<$Res>
+    extends _$RequestFormStateCopyWithImpl<$Res>
+    implements $RequestFormStateErrorCopyWith<$Res> {
+  _$RequestFormStateErrorCopyWithImpl(
+      RequestFormStateError _value, $Res Function(RequestFormStateError) _then)
+      : super(_value, (v) => _then(v as RequestFormStateError));
+
+  @override
+  RequestFormStateError get _value => super._value as RequestFormStateError;
+
+  @override
+  $Res call({
+    Object req = freezed,
+    Object msg = freezed,
+  }) {
+    return _then(RequestFormStateError(
+      req == freezed ? _value.req : req as RequestModel,
+      msg == freezed ? _value.msg : msg as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$RequestFormStateError extends RequestFormStateError {
+  const _$RequestFormStateError(this.req, this.msg)
+      : assert(req != null),
+        assert(msg != null),
+        super._();
+
+  @override
+  final RequestModel req;
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'RequestFormState.error(req: $req, msg: $msg)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is RequestFormStateError &&
+            (identical(other.req, req) ||
+                const DeepCollectionEquality().equals(other.req, req)) &&
+            (identical(other.msg, msg) ||
+                const DeepCollectionEquality().equals(other.msg, msg)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(req) ^
+      const DeepCollectionEquality().hash(msg);
+
+  @override
+  $RequestFormStateErrorCopyWith<RequestFormStateError> get copyWith =>
+      _$RequestFormStateErrorCopyWithImpl<RequestFormStateError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(RequestModel req),
+    @required TResult nameChanged(RequestModel req),
+    @required TResult descriptionChanged(RequestModel req),
+    @required TResult dateChanged(RequestModel req),
+    @required TResult priorityChanged(RequestModel req),
+    @required TResult timeEstimationChanged(RequestModel req),
+    @required TResult imagesChanged(RequestModel req),
+    @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    assert(error != null);
+    return error(req, msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(RequestModel req),
+    TResult nameChanged(RequestModel req),
+    TResult descriptionChanged(RequestModel req),
+    TResult dateChanged(RequestModel req),
+    TResult priorityChanged(RequestModel req),
+    TResult timeEstimationChanged(RequestModel req),
+    TResult imagesChanged(RequestModel req),
+    TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(req, msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(RequestFormInitial value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult descriptionChanged(DescriptionChanged value),
+    @required TResult dateChanged(DateChanged value),
+    @required TResult priorityChanged(PriorityChanged value),
+    @required TResult timeEstimationChanged(TimeEstimationChanged value),
+    @required TResult imagesChanged(ImagesChanged value),
+    @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(RequestFormInitial value),
+    TResult nameChanged(NameChanged value),
+    TResult descriptionChanged(DescriptionChanged value),
+    TResult dateChanged(DateChanged value),
+    TResult priorityChanged(PriorityChanged value),
+    TResult timeEstimationChanged(TimeEstimationChanged value),
+    TResult imagesChanged(ImagesChanged value),
+    TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RequestFormStateError extends RequestFormState {
+  const RequestFormStateError._() : super._();
+  const factory RequestFormStateError(RequestModel req, String msg) =
+      _$RequestFormStateError;
+
+  @override
+  RequestModel get req;
+  String get msg;
+  @override
+  $RequestFormStateErrorCopyWith<RequestFormStateError> get copyWith;
 }

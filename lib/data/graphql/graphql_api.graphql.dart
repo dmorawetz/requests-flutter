@@ -119,6 +119,22 @@ class NewRequest$Mutation with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class FileInput with EquatableMixin {
+  FileInput({this.filename, this.url});
+
+  factory FileInput.fromJson(Map<String, dynamic> json) =>
+      _$FileInputFromJson(json);
+
+  String filename;
+
+  String url;
+
+  @override
+  List<Object> get props => [filename, url];
+  Map<String, dynamic> toJson() => _$FileInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class RequestInput with EquatableMixin {
   RequestInput(
       {this.status,
@@ -129,7 +145,8 @@ class RequestInput with EquatableMixin {
       this.creatorLastname,
       this.creatorEmail,
       this.dueDate,
-      this.timeEstimation});
+      this.timeEstimation,
+      this.attachments});
 
   factory RequestInput.fromJson(Map<String, dynamic> json) =>
       _$RequestInputFromJson(json);
@@ -154,6 +171,8 @@ class RequestInput with EquatableMixin {
 
   double timeEstimation;
 
+  List<FileInput> attachments;
+
   @override
   List<Object> get props => [
         status,
@@ -164,7 +183,8 @@ class RequestInput with EquatableMixin {
         creatorLastname,
         creatorEmail,
         dueDate,
-        timeEstimation
+        timeEstimation,
+        attachments
       ];
   Map<String, dynamic> toJson() => _$RequestInputToJson(this);
 }

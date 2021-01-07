@@ -155,6 +155,18 @@ Map<String, dynamic> _$NewRequest$MutationToJson(
       'createRequest': instance.createRequest?.toJson(),
     };
 
+FileInput _$FileInputFromJson(Map<String, dynamic> json) {
+  return FileInput(
+    filename: json['filename'] as String,
+    url: json['url'] as String,
+  );
+}
+
+Map<String, dynamic> _$FileInputToJson(FileInput instance) => <String, dynamic>{
+      'filename': instance.filename,
+      'url': instance.url,
+    };
+
 RequestInput _$RequestInputFromJson(Map<String, dynamic> json) {
   return RequestInput(
     status: _$enumDecodeNullable(_$StatusEnumMap, json['status'],
@@ -170,6 +182,10 @@ RequestInput _$RequestInputFromJson(Map<String, dynamic> json) {
         ? null
         : DateTime.parse(json['dueDate'] as String),
     timeEstimation: (json['timeEstimation'] as num)?.toDouble(),
+    attachments: (json['attachments'] as List)
+        ?.map((e) =>
+            e == null ? null : FileInput.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -184,6 +200,7 @@ Map<String, dynamic> _$RequestInputToJson(RequestInput instance) =>
       'creatorEmail': instance.creatorEmail,
       'dueDate': instance.dueDate?.toIso8601String(),
       'timeEstimation': instance.timeEstimation,
+      'attachments': instance.attachments?.map((e) => e?.toJson())?.toList(),
     };
 
 NewRequestArguments _$NewRequestArgumentsFromJson(Map<String, dynamic> json) {

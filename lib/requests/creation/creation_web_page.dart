@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:requests/requests/creation/bloc/request_form_bloc.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
 import 'package:requests/requests/creation/widgets/request_form.dart';
@@ -8,7 +9,7 @@ class CreationWebPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RequestFormBloc(),
+      create: (context) => RequestFormBloc(GraphQLProvider.of(context).value),
       child: Scaffold(
         body: BlocBuilder<RequestFormBloc, RequestFormState>(
           buildWhen: (prev, curr) => curr.maybeMap(
