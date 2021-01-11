@@ -6,7 +6,7 @@ part 'RequestModel.freezed.dart';
 @freezed
 abstract class RequestModel with _$RequestModel {
   const factory RequestModel({
-    @Default(Status.kw$NEW) Status status,
+    @Default(Status.created) Status status,
     @Default("") String title,
     @Default("") String description,
     @Default(Priority.low) Priority priority,

@@ -15,7 +15,7 @@ class _$RequestModelTearOff {
 
 // ignore: unused_element
   _RequestModel call(
-      {Status status = Status.kw$NEW,
+      {Status status = Status.created,
       String title = "",
       String description = "",
       Priority priority = Priority.low,
@@ -167,7 +167,7 @@ class __$RequestModelCopyWithImpl<$Res> extends _$RequestModelCopyWithImpl<$Res>
 /// @nodoc
 class _$_RequestModel implements _RequestModel {
   const _$_RequestModel(
-      {this.status = Status.kw$NEW,
+      {this.status = Status.created,
       this.title = "",
       this.description = "",
       this.priority = Priority.low,
@@ -183,7 +183,7 @@ class _$_RequestModel implements _RequestModel {
         assert(creatorEmail != null),
         assert(timeEstimation != null);
 
-  @JsonKey(defaultValue: Status.kw$NEW)
+  @JsonKey(defaultValue: Status.created)
   @override
   final Status status;
   @JsonKey(defaultValue: "")

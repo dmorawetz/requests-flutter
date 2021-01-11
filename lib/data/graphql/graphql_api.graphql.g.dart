@@ -94,7 +94,7 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$StatusEnumMap = {
-  Status.kw$NEW: 'NEW',
+  Status.created: 'CREATED',
   Status.working: 'WORKING',
   Status.done: 'DONE',
   Status.rejected: 'REJECTED',

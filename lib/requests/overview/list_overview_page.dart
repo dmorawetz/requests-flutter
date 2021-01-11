@@ -29,7 +29,14 @@ class RequestsListOverviewPage extends StatelessWidget {
 
             if (result.loading) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    print('refresh');
+                    await Future.delayed(Duration(seconds: 1));
+                    await refetch();
+                  },
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
 

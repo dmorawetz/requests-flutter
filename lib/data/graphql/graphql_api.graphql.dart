@@ -190,8 +190,8 @@ class RequestInput with EquatableMixin {
 }
 
 enum Status {
-  @JsonValue('NEW')
-  kw$NEW,
+  @JsonValue('CREATED')
+  created,
   @JsonValue('WORKING')
   working,
   @JsonValue('DONE')
