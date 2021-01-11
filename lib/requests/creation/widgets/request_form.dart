@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:requests/common/widgets/radio_list_dialog.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/bloc/request_form_bloc.dart';
 import 'package:requests/requests/creation/bloc/request_form_event.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
+import 'package:requests/requests/creation/image_select_page.dart';
 
 class RequestForm extends StatelessWidget {
   final TextEditingController dateController = TextEditingController();
@@ -32,7 +34,7 @@ class RequestForm extends StatelessWidget {
                     .add(RequestFormEvent.changeName(val));
               },
               validator: requiredValidator,
-              initialValue: state.req.creator,
+              initialValue: state.req.title,
               decoration: InputDecoration(
                 hintText: 'Title',
                 filled: kIsWeb,
@@ -197,7 +199,14 @@ class RequestForm extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.camera_alt),
           title: Text('Add image'),
-          onTap: () {},
+          onTap: () async {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => ImageSelectPage(),
+              ),
+            );
+          },
         ),
         _Spacing(),
         ListTile(

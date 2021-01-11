@@ -14,7 +14,7 @@ class GraphqlProvider extends StatelessWidget {
     final url = kIsWeb
         ? 'localhost'
         : Platform.isAndroid
-            ? '10.0.2.2' // '192.168.1.103'
+            ? '10.0.2.2' //'192.168.1.103'
             : 'localhost';
     Link link = HttpLink(uri: 'http://$url:4001/');
 
