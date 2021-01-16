@@ -112,6 +112,7 @@ class RequestForm extends StatelessWidget {
                 filled: kIsWeb,
                 border: InputBorder.none,
               ),
+              initialValue: state.req.description,
             ),
           ),
         ),

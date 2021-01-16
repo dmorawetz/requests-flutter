@@ -15,4 +15,16 @@ abstract class RequestModel with _$RequestModel {
     DateTime dueDate,
     @Default(0.0) double timeEstimation,
   }) = _RequestModel;
+
+  factory RequestModel.fromGraphql(
+    GraphqlApi$Query$Requests request
+) => _RequestModel(
+      status: request.status,
+      title:  request.title,
+      description: request.description,
+      priority: request.priority,
+      creator: request.creator != null ?'${request.creator.firstname} ${request.creator.lastname}' : '',
+      creatorEmail: request.creator != null ? request.creator.email : '',
+      dueDate: request.dueDate,
+      timeEstimation: request.timeEstimation);
 }
