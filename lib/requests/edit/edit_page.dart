@@ -27,13 +27,13 @@ class EditPage extends StatelessWidget {
           actions: [
             Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.check),
-                onPressed: () {
-                  BlocProvider.of<RequestFormBloc>(context)
-                      .add(RequestFormEvent.save());
-                  Navigator.pop(context);
-                },
-                tooltip: 'Save',
+                // icon: Icon(Icons.check),
+                // onPressed: () {
+                //   BlocProvider.of<RequestFormBloc>(context)
+                //       .add(RequestFormEvent.save());
+                //   Navigator.pop(context);
+                // },
+                // tooltip: 'Save',
               ),
             ),
           ],
