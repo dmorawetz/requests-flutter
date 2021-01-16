@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
+import 'package:requests/requests/edit/edit_page.dart';
 
 class RequestDetailPage extends StatelessWidget {
   final GraphqlApi$Query$Requests request;
@@ -14,7 +15,10 @@ class RequestDetailPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => EditPage(request: request,)));
+            },
           )
         ],
       ),
