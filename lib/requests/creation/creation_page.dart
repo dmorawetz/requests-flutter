@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:requests/common/providers/graphql_provider.dart';
+import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/bloc/request_form_bloc.dart';
 import 'package:requests/requests/creation/bloc/request_form_event.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
 import 'package:requests/requests/creation/widgets/request_form.dart';
 
 class CreationPage extends StatelessWidget {
+  final GraphqlApi$Query$Requests request;
+
+  const CreationPage({Key key, this.request}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final bloc = RequestFormBloc(GraphQLProvider.of(context).value);
+    final bloc = RequestFormBloc(GraphQLProvider.of(context).value, this.request);
+
 
     return BlocProvider.value(
       value: bloc,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("New request"),
+          title: Text(request != null ? "Edit request" : "New request"),
           elevation: 0,
           actions: [
             Builder(
