@@ -15,15 +15,17 @@ class CreationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = RequestFormBloc(GraphQLProvider.of(context).value, this.request);
-
+    final bloc =
+        RequestFormBloc(GraphQLProvider.of(context).value, this.request);
 
     return BlocProvider.value(
       value: bloc,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(request != null ? "Edit request" : "New request"),
           elevation: 0,
+          backgroundColor: Colors.transparent,
+          brightness: Brightness.light,
+          iconTheme: Theme.of(context).iconTheme.copyWith(color: Colors.black),
           actions: [
             Builder(
               builder: (context) => IconButton(
@@ -38,6 +40,8 @@ class CreationPage extends StatelessWidget {
             ),
           ],
         ),
+        extendBodyBehindAppBar: true,
+        extendBody: true,
         body: Builder(
           builder: (context) => BlocListener<RequestFormBloc, RequestFormState>(
             listenWhen: (prev, curr) => curr.maybeMap(
@@ -57,7 +61,9 @@ class CreationPage extends StatelessWidget {
                 if (constraints.maxWidth < 920) {
                   return ListView(
                     children: [
-                      RequestForm(),
+                      RequestForm(
+                        isEdit: request != null,
+                      ),
                     ],
                   );
                 }

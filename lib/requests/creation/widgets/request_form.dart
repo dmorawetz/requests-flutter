@@ -12,6 +12,9 @@ import 'package:requests/requests/creation/image_select_page.dart';
 
 class RequestForm extends StatelessWidget {
   final TextEditingController dateController = TextEditingController();
+  final bool isEdit;
+
+  RequestForm({Key key, this.isEdit = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,29 @@ class RequestForm extends StatelessWidget {
       children: [
         SizedBox(
           height: kIsWeb ? 75 : 5,
+        ),
+        Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(isEdit
+                  ? "assets/edit-request-background.png"
+                  : "assets/new-request-background.png"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 58, top: 128),
+              child: Text(
+                isEdit ? 'Fix\na\nmistake' : 'Launch a\nnew\nrequest',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 24,
         ),
         ListTile(
           leading: Icon(Icons.flag),
