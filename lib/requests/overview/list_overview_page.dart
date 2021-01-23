@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/services.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
@@ -20,9 +21,62 @@ class RequestsListOverviewPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://lh4.googleusercontent.com/-ornvonlrF1Q/AAAAAAAAAAI/AAAAAAAAAAA/ou7BqkTiFBk/s44-p-k-no-ns-nd/photo.jpg"),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => SimpleDialog(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.network(
+                                      "https://docs.morawetz.dev/seafhttp/files/260593c4-c986-4ddf-8f43-5a57cf6e8a2c/requests-morawetz-dev-qr.png"),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Clipboard.setData(ClipboardData(
+                                        text: 'https://requests.morawetz.dev'));
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text('Copied!'),
+                                    ));
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'https://requests.morawetz.dev',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              .copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.pink,
+                                              ),
+                                        ),
+                                        SizedBox(
+                                          width: 4,
+                                        ),
+                                        Icon(
+                                          Icons.content_copy,
+                                          color: Colors.pink,
+                                          size: 14,
+                                        ),
+                                      ],
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ));
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://lh4.googleusercontent.com/-ornvonlrF1Q/AAAAAAAAAAI/AAAAAAAAAAA/ou7BqkTiFBk/s44-p-k-no-ns-nd/photo.jpg"),
+                  ),
                 ),
                 IconButton(
                   icon: Icon(
@@ -109,7 +163,7 @@ class RequestsListOverviewPage extends StatelessWidget {
                                     color: Colors.black87)),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0, bottom: 6),
-                          child: Text('hours done',
+                          child: Text('hours planned',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline2
@@ -290,8 +344,8 @@ class RequestsListOverviewPage extends StatelessWidget {
                                           .compareTo(DateTime.now()) >
                                       0)
                                     TweenAnimationBuilder<double>(
-                                      duration: Duration(milliseconds: 800),
-                                      curve: Curves.decelerate,
+                                      duration: Duration(milliseconds: 1600),
+                                      curve: Curves.easeOutCubic,
                                       tween: Tween<double>(
                                         begin: 1.0,
                                         end: request.dueDate

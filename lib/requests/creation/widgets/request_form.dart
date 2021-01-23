@@ -26,20 +26,25 @@ class RequestForm extends StatelessWidget {
         ),
         Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(isEdit
-                  ? "assets/edit-request-background.png"
-                  : "assets/new-request-background.png"),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Image.asset(
+                  isEdit
+                      ? "assets/edit-request-background.png"
+                      : "assets/new-request-background.png",
+                  width: 280,
+                ),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 58, top: 128),
+              padding: const EdgeInsets.only(left: 98, top: 98),
               child: Text(
-                isEdit ? 'Fix\na\nmistake' : 'Launch a\nnew\nrequest',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                isEdit ? 'Change\nyour\nrequest' : 'Launch a\nnew\nrequest',
+                style: Theme.of(context).textTheme.headline1.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20),
               ),
             ),
           ],
