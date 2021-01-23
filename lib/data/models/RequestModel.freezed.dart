@@ -165,7 +165,7 @@ class __$RequestModelCopyWithImpl<$Res> extends _$RequestModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_RequestModel implements _RequestModel {
+class _$_RequestModel extends _RequestModel {
   const _$_RequestModel(
       {this.status = Status.created,
       this.title = "",
@@ -181,7 +181,8 @@ class _$_RequestModel implements _RequestModel {
         assert(priority != null),
         assert(creator != null),
         assert(creatorEmail != null),
-        assert(timeEstimation != null);
+        assert(timeEstimation != null),
+        super._();
 
   @JsonKey(defaultValue: Status.created)
   @override
@@ -257,7 +258,8 @@ class _$_RequestModel implements _RequestModel {
       __$RequestModelCopyWithImpl<_RequestModel>(this, _$identity);
 }
 
-abstract class _RequestModel implements RequestModel {
+abstract class _RequestModel extends RequestModel {
+  const _RequestModel._() : super._();
   const factory _RequestModel(
       {Status status,
       String title,

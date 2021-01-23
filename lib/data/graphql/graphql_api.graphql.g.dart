@@ -6,31 +6,31 @@ part of 'graphql_api.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GraphqlApi$Query$Requests$Creator _$GraphqlApi$Query$Requests$CreatorFromJson(
-    Map<String, dynamic> json) {
-  return GraphqlApi$Query$Requests$Creator()
+OpenRequests$Query$Requests$Creator
+    _$OpenRequests$Query$Requests$CreatorFromJson(Map<String, dynamic> json) {
+  return OpenRequests$Query$Requests$Creator()
     ..firstname = json['firstname'] as String
     ..lastname = json['lastname'] as String
     ..email = json['email'] as String;
 }
 
-Map<String, dynamic> _$GraphqlApi$Query$Requests$CreatorToJson(
-        GraphqlApi$Query$Requests$Creator instance) =>
+Map<String, dynamic> _$OpenRequests$Query$Requests$CreatorToJson(
+        OpenRequests$Query$Requests$Creator instance) =>
     <String, dynamic>{
       'firstname': instance.firstname,
       'lastname': instance.lastname,
       'email': instance.email,
     };
 
-GraphqlApi$Query$Requests _$GraphqlApi$Query$RequestsFromJson(
+OpenRequests$Query$Requests _$OpenRequests$Query$RequestsFromJson(
     Map<String, dynamic> json) {
-  return GraphqlApi$Query$Requests()
+  return OpenRequests$Query$Requests()
     ..status = _$enumDecodeNullable(_$StatusEnumMap, json['status'],
         unknownValue: Status.artemisUnknown)
     ..title = json['title'] as String
     ..creator = json['creator'] == null
         ? null
-        : GraphqlApi$Query$Requests$Creator.fromJson(
+        : OpenRequests$Query$Requests$Creator.fromJson(
             json['creator'] as Map<String, dynamic>)
     ..description = json['description'] as String
     ..creationDate = json['creationDate'] == null
@@ -47,8 +47,8 @@ GraphqlApi$Query$Requests _$GraphqlApi$Query$RequestsFromJson(
     ..timeEstimation = (json['timeEstimation'] as num)?.toDouble();
 }
 
-Map<String, dynamic> _$GraphqlApi$Query$RequestsToJson(
-        GraphqlApi$Query$Requests instance) =>
+Map<String, dynamic> _$OpenRequests$Query$RequestsToJson(
+        OpenRequests$Query$Requests instance) =>
     <String, dynamic>{
       'status': _$StatusEnumMap[instance.status],
       'title': instance.title,
@@ -108,18 +108,42 @@ const _$PriorityEnumMap = {
   Priority.artemisUnknown: 'ARTEMIS_UNKNOWN',
 };
 
-GraphqlApi$Query _$GraphqlApi$QueryFromJson(Map<String, dynamic> json) {
-  return GraphqlApi$Query()
+OpenRequests$Query$UserStatistics _$OpenRequests$Query$UserStatisticsFromJson(
+    Map<String, dynamic> json) {
+  return OpenRequests$Query$UserStatistics()
+    ..user = json['user'] as String
+    ..hoursPlanned = (json['hoursPlanned'] as num)?.toDouble()
+    ..hoursDone = (json['hoursDone'] as num)?.toDouble();
+}
+
+Map<String, dynamic> _$OpenRequests$Query$UserStatisticsToJson(
+        OpenRequests$Query$UserStatistics instance) =>
+    <String, dynamic>{
+      'user': instance.user,
+      'hoursPlanned': instance.hoursPlanned,
+      'hoursDone': instance.hoursDone,
+    };
+
+OpenRequests$Query _$OpenRequests$QueryFromJson(Map<String, dynamic> json) {
+  return OpenRequests$Query()
     ..requests = (json['requests'] as List)
         ?.map((e) => e == null
             ? null
-            : GraphqlApi$Query$Requests.fromJson(e as Map<String, dynamic>))
+            : OpenRequests$Query$Requests.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..userStatistics = (json['userStatistics'] as List)
+        ?.map((e) => e == null
+            ? null
+            : OpenRequests$Query$UserStatistics.fromJson(
+                e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$GraphqlApi$QueryToJson(GraphqlApi$Query instance) =>
+Map<String, dynamic> _$OpenRequests$QueryToJson(OpenRequests$Query instance) =>
     <String, dynamic>{
       'requests': instance.requests?.map((e) => e?.toJson())?.toList(),
+      'userStatistics':
+          instance.userStatistics?.map((e) => e?.toJson())?.toList(),
     };
 
 NewRequest$Mutation$CreateRequest _$NewRequest$Mutation$CreateRequestFromJson(
@@ -201,6 +225,19 @@ Map<String, dynamic> _$RequestInputToJson(RequestInput instance) =>
       'dueDate': instance.dueDate?.toIso8601String(),
       'timeEstimation': instance.timeEstimation,
       'attachments': instance.attachments?.map((e) => e?.toJson())?.toList(),
+    };
+
+OpenRequestsArguments _$OpenRequestsArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return OpenRequestsArguments(
+    ids: (json['ids'] as List)?.map((e) => e as String)?.toList(),
+  );
+}
+
+Map<String, dynamic> _$OpenRequestsArgumentsToJson(
+        OpenRequestsArguments instance) =>
+    <String, dynamic>{
+      'ids': instance.ids,
     };
 
 NewRequestArguments _$NewRequestArgumentsFromJson(Map<String, dynamic> json) {

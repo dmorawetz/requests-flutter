@@ -8,12 +8,12 @@ import 'package:gql/ast.dart';
 part 'graphql_api.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class GraphqlApi$Query$Requests$Creator with EquatableMixin {
-  GraphqlApi$Query$Requests$Creator();
+class OpenRequests$Query$Requests$Creator with EquatableMixin {
+  OpenRequests$Query$Requests$Creator();
 
-  factory GraphqlApi$Query$Requests$Creator.fromJson(
+  factory OpenRequests$Query$Requests$Creator.fromJson(
           Map<String, dynamic> json) =>
-      _$GraphqlApi$Query$Requests$CreatorFromJson(json);
+      _$OpenRequests$Query$Requests$CreatorFromJson(json);
 
   String firstname;
 
@@ -24,22 +24,22 @@ class GraphqlApi$Query$Requests$Creator with EquatableMixin {
   @override
   List<Object> get props => [firstname, lastname, email];
   Map<String, dynamic> toJson() =>
-      _$GraphqlApi$Query$Requests$CreatorToJson(this);
+      _$OpenRequests$Query$Requests$CreatorToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class GraphqlApi$Query$Requests with EquatableMixin {
-  GraphqlApi$Query$Requests();
+class OpenRequests$Query$Requests with EquatableMixin {
+  OpenRequests$Query$Requests();
 
-  factory GraphqlApi$Query$Requests.fromJson(Map<String, dynamic> json) =>
-      _$GraphqlApi$Query$RequestsFromJson(json);
+  factory OpenRequests$Query$Requests.fromJson(Map<String, dynamic> json) =>
+      _$OpenRequests$Query$RequestsFromJson(json);
 
   @JsonKey(unknownEnumValue: Status.artemisUnknown)
   Status status;
 
   String title;
 
-  GraphqlApi$Query$Requests$Creator creator;
+  OpenRequests$Query$Requests$Creator creator;
 
   String description;
 
@@ -66,21 +66,43 @@ class GraphqlApi$Query$Requests with EquatableMixin {
         dueDate,
         timeEstimation
       ];
-  Map<String, dynamic> toJson() => _$GraphqlApi$Query$RequestsToJson(this);
+  Map<String, dynamic> toJson() => _$OpenRequests$Query$RequestsToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class GraphqlApi$Query with EquatableMixin {
-  GraphqlApi$Query();
+class OpenRequests$Query$UserStatistics with EquatableMixin {
+  OpenRequests$Query$UserStatistics();
 
-  factory GraphqlApi$Query.fromJson(Map<String, dynamic> json) =>
-      _$GraphqlApi$QueryFromJson(json);
+  factory OpenRequests$Query$UserStatistics.fromJson(
+          Map<String, dynamic> json) =>
+      _$OpenRequests$Query$UserStatisticsFromJson(json);
 
-  List<GraphqlApi$Query$Requests> requests;
+  String user;
+
+  double hoursPlanned;
+
+  double hoursDone;
 
   @override
-  List<Object> get props => [requests];
-  Map<String, dynamic> toJson() => _$GraphqlApi$QueryToJson(this);
+  List<Object> get props => [user, hoursPlanned, hoursDone];
+  Map<String, dynamic> toJson() =>
+      _$OpenRequests$Query$UserStatisticsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class OpenRequests$Query with EquatableMixin {
+  OpenRequests$Query();
+
+  factory OpenRequests$Query.fromJson(Map<String, dynamic> json) =>
+      _$OpenRequests$QueryFromJson(json);
+
+  List<OpenRequests$Query$Requests> requests;
+
+  List<OpenRequests$Query$UserStatistics> userStatistics;
+
+  @override
+  List<Object> get props => [requests, userStatistics];
+  Map<String, dynamic> toJson() => _$OpenRequests$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -212,21 +234,52 @@ enum Priority {
   artemisUnknown,
 }
 
-class GraphqlApiQuery extends GraphQLQuery<GraphqlApi$Query, JsonSerializable> {
-  GraphqlApiQuery();
+@JsonSerializable(explicitToJson: true)
+class OpenRequestsArguments extends JsonSerializable with EquatableMixin {
+  OpenRequestsArguments({this.ids});
+
+  @override
+  factory OpenRequestsArguments.fromJson(Map<String, dynamic> json) =>
+      _$OpenRequestsArgumentsFromJson(json);
+
+  final List<String> ids;
+
+  @override
+  List<Object> get props => [ids];
+  @override
+  Map<String, dynamic> toJson() => _$OpenRequestsArgumentsToJson(this);
+}
+
+class OpenRequestsQuery
+    extends GraphQLQuery<OpenRequests$Query, OpenRequestsArguments> {
+  OpenRequestsQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: null,
-        variableDefinitions: [],
+        name: NameNode(value: 'open_requests'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'ids')),
+              type: ListTypeNode(
+                  type: NamedTypeNode(
+                      name: NameNode(value: 'String'), isNonNull: false),
+                  isNonNull: false),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
               name: NameNode(value: 'requests'),
               alias: null,
-              arguments: [],
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'without'),
+                    value: ListValueNode(
+                        values: [EnumValueNode(name: NameNode(value: 'DONE'))]))
+              ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
                 FieldNode(
@@ -302,18 +355,50 @@ class GraphqlApiQuery extends GraphQLQuery<GraphqlApi$Query, JsonSerializable> {
                     arguments: [],
                     directives: [],
                     selectionSet: null)
+              ])),
+          FieldNode(
+              name: NameNode(value: 'userStatistics'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'id'),
+                    value: VariableNode(name: NameNode(value: 'ids')))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'user'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'hoursPlanned'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'hoursDone'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
               ]))
         ]))
   ]);
 
   @override
-  final String operationName = 'graphql_api';
+  final String operationName = 'open_requests';
 
   @override
-  List<Object> get props => [document, operationName];
+  final OpenRequestsArguments variables;
+
   @override
-  GraphqlApi$Query parse(Map<String, dynamic> json) =>
-      GraphqlApi$Query.fromJson(json);
+  List<Object> get props => [document, operationName, variables];
+  @override
+  OpenRequests$Query parse(Map<String, dynamic> json) =>
+      OpenRequests$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)

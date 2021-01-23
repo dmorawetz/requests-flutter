@@ -3,7 +3,7 @@ import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/creation_page.dart';
 
 class RequestDetailPage extends StatelessWidget {
-  final GraphqlApi$Query$Requests request;
+  final OpenRequests$Query$Requests request;
 
   const RequestDetailPage({Key key, this.request}) : super(key: key);
 
@@ -17,7 +17,11 @@ class RequestDetailPage extends StatelessWidget {
             icon: Icon(Icons.edit),
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CreationPage(request: request,)));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CreationPage(
+                            request: request,
+                          )));
             },
           )
         ],

@@ -9,7 +9,7 @@ import 'package:requests/requests/creation/bloc/request_form_state.dart';
 import 'package:requests/requests/creation/widgets/request_form.dart';
 
 class CreationPage extends StatelessWidget {
-  final GraphqlApi$Query$Requests request;
+  final OpenRequests$Query$Requests request;
 
   const CreationPage({Key key, this.request}) : super(key: key);
 

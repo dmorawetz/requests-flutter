@@ -4,7 +4,8 @@ import 'package:requests/data/graphql/graphql_api.dart';
 part 'RequestModel.freezed.dart';
 
 @freezed
-abstract class RequestModel with _$RequestModel {
+abstract class RequestModel implements _$RequestModel {
+  const RequestModel._();
   const factory RequestModel({
     @Default(Status.created) Status status,
     @Default("") String title,
@@ -16,15 +17,16 @@ abstract class RequestModel with _$RequestModel {
     @Default(0.0) double timeEstimation,
   }) = _RequestModel;
 
-  factory RequestModel.fromGraphql(
-    GraphqlApi$Query$Requests request
-) => _RequestModel(
-      status: request.status,
-      title:  request.title,
-      description: request.description,
-      priority: request.priority,
-      creator: request.creator != null ?'${request.creator.firstname} ${request.creator.lastname}' : '',
-      creatorEmail: request.creator != null ? request.creator.email : '',
-      dueDate: request.dueDate,
-      timeEstimation: request.timeEstimation);
+  static RequestModel fromGraphql(OpenRequests$Query$Requests request) =>
+      _RequestModel(
+          status: request.status,
+          title: request.title,
+          description: request.description,
+          priority: request.priority,
+          creator: request.creator != null
+              ? '${request.creator.firstname} ${request.creator.lastname}'
+              : '',
+          creatorEmail: request.creator != null ? request.creator.email : '',
+          dueDate: request.dueDate,
+          timeEstimation: request.timeEstimation);
 }

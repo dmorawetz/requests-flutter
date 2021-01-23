@@ -8,11 +8,13 @@ import 'package:requests/data/graphql/graphql_api.dart';
 class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
   final GraphQLClient graphQLClient;
 
-  RequestFormBloc(this.graphQLClient, GraphqlApi$Query$Requests request)
-      : super(RequestFormState.initial(request != null ? RequestModel.fromGraphql(request) : RequestModel(
-            dueDate: DateTime.now().add(Duration(days: 7)),
-            creator: "Daniel",
-            creatorEmail: "")));
+  RequestFormBloc(this.graphQLClient, OpenRequests$Query$Requests request)
+      : super(RequestFormState.initial(request != null
+            ? RequestModel.fromGraphql(request)
+            : RequestModel(
+                dueDate: DateTime.now().add(Duration(days: 7)),
+                creator: "Daniel",
+                creatorEmail: "")));
 
   @override
   Stream<RequestFormState> mapEventToState(RequestFormEvent event) async* {
@@ -29,7 +31,7 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
             state.req.copyWith(dueDate: value.date));
       },
       changeName: (ChangeName value) async* {
-        yield RequestFormState.nameChanged(         // TODO fix naming
+        yield RequestFormState.nameChanged(// TODO fix naming
             state.req.copyWith(title: value.name));
       },
       changeDescription: (ChangeDescription value) async* {
