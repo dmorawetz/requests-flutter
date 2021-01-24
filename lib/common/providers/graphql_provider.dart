@@ -23,6 +23,11 @@ class GraphqlProvider extends StatelessWidget {
         GraphQLClient(
           link: link,
           cache: InMemoryCache(),
+          defaultPolicies: DefaultPolicies(
+            query: Policies(
+              fetch: FetchPolicy.cacheAndNetwork,
+            ),
+          ),
         ),
       ),
       child: this.child,
