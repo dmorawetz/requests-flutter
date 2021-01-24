@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:requests/requests/overview/bloc/list_overview_bloc.dart';
+import 'package:requests/requests/overview/bloc/list_overview_event.dart';
 import 'package:requests/requests/overview/request_detail_page.dart';
 
 const priorities = ["LOW", "MEDIUM", "HIGH"];
@@ -128,12 +131,6 @@ class ListOverviewPopulated extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 18.0),
-                        /*child: Icon(
-                                              group == "HIGH"
-                                                  ? Icons.priority_high
-                                                  : group == "MEDIUM"
-                                                      ? Icons.hdr_strong
-                                                      : Icons.hdr_weak,*/
                         child: Image.asset(
                           group == "HIGH"
                               ? "assets/high-importance-icon.png"
@@ -160,7 +157,16 @@ class ListOverviewPopulated extends StatelessWidget {
               final daysLeft =
                   request.dueDate.difference(DateTime.now()).inDays;
               return Dismissible(
-                key: UniqueKey(),
+                key: ValueKey(request),
+                onDismissed: (direction) {
+                  if (direction == DismissDirection.startToEnd) {
+                    BlocProvider.of<ListOverviewBloc>(context)
+                        .add(ListOverviewEvent.markDone(request));
+                  } else {
+                    BlocProvider.of<ListOverviewBloc>(context)
+                        .add(ListOverviewEvent.markRejected(request));
+                  }
+                },
                 background: Container(
                   color: Colors.green,
                   child: Row(
@@ -196,11 +202,6 @@ class ListOverviewPopulated extends StatelessWidget {
                     request.title,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
-                  /*       tileColor: daysLeft < 0
-                                        ? Colors.pink.withAlpha(75)
-                                        : daysLeft < 3
-                                            ? Colors.deepOrange.withAlpha(25)
-                                            : Colors.transparent,*/
                   onTap: () {
                     Navigator.push(
                         context,

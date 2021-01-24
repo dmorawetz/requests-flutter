@@ -45,7 +45,6 @@ class _RequestsListOverviewPageState extends State<RequestsListOverviewPage> {
             builder: (context) => RefreshIndicator(
               key: _refreshKey,
               onRefresh: () async {
-                await Future.delayed(Duration(seconds: 3));
                 context
                     .read<ListOverviewBloc>()
                     .add(ListOverviewEvent.reload());
@@ -113,12 +112,13 @@ class _Header extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Image.network(
-                                "https://docs.morawetz.dev/seafhttp/files/260593c4-c986-4ddf-8f43-5a57cf6e8a2c/requests-morawetz-dev-qr.png"),
+                                "https://docs.morawetz.dev/seafhttp/files/f38412eb-68dc-4fcd-b813-379e3de25010/requests-morawetz-dev-qr.png"),
                           ),
                           InkWell(
                             onTap: () {
                               Clipboard.setData(ClipboardData(
-                                  text: 'https://requests.morawetz.dev'));
+                                  text:
+                                      'Trage alle Infos bitte gleich hier ein: https://requests.morawetz.dev/#/werhl234lkj'));
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(SnackBar(
                                 content: Text('Copied!'),
@@ -130,7 +130,7 @@ class _Header extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                    'https://requests.morawetz.dev',
+                                    'Copy to clipboard',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText2

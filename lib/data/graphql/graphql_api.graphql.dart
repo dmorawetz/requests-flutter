@@ -34,6 +34,8 @@ class OpenRequests$Query$Requests with EquatableMixin {
   factory OpenRequests$Query$Requests.fromJson(Map<String, dynamic> json) =>
       _$OpenRequests$Query$RequestsFromJson(json);
 
+  String id;
+
   @JsonKey(unknownEnumValue: Status.artemisUnknown)
   Status status;
 
@@ -56,6 +58,7 @@ class OpenRequests$Query$Requests with EquatableMixin {
 
   @override
   List<Object> get props => [
+        id,
         status,
         title,
         creator,
@@ -211,6 +214,90 @@ class RequestInput with EquatableMixin {
   Map<String, dynamic> toJson() => _$RequestInputToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true)
+class UpdateRequest$Mutation$Update with EquatableMixin {
+  UpdateRequest$Mutation$Update();
+
+  factory UpdateRequest$Mutation$Update.fromJson(Map<String, dynamic> json) =>
+      _$UpdateRequest$Mutation$UpdateFromJson(json);
+
+  @JsonKey(unknownEnumValue: Status.artemisUnknown)
+  Status status;
+
+  String title;
+
+  DateTime creationDate;
+
+  @override
+  List<Object> get props => [status, title, creationDate];
+  Map<String, dynamic> toJson() => _$UpdateRequest$Mutation$UpdateToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateRequest$Mutation with EquatableMixin {
+  UpdateRequest$Mutation();
+
+  factory UpdateRequest$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$UpdateRequest$MutationFromJson(json);
+
+  UpdateRequest$Mutation$Update update;
+
+  @override
+  List<Object> get props => [update];
+  Map<String, dynamic> toJson() => _$UpdateRequest$MutationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class RequestUpdate with EquatableMixin {
+  RequestUpdate(
+      {this.id,
+      this.status,
+      this.title,
+      this.description,
+      this.attachments,
+      this.priority,
+      this.lastModified,
+      this.dueDate,
+      this.timeEstimation});
+
+  factory RequestUpdate.fromJson(Map<String, dynamic> json) =>
+      _$RequestUpdateFromJson(json);
+
+  String id;
+
+  @JsonKey(unknownEnumValue: Status.artemisUnknown)
+  Status status;
+
+  String title;
+
+  String description;
+
+  List<FileInput> attachments;
+
+  @JsonKey(unknownEnumValue: Priority.artemisUnknown)
+  Priority priority;
+
+  DateTime lastModified;
+
+  DateTime dueDate;
+
+  double timeEstimation;
+
+  @override
+  List<Object> get props => [
+        id,
+        status,
+        title,
+        description,
+        attachments,
+        priority,
+        lastModified,
+        dueDate,
+        timeEstimation
+      ];
+  Map<String, dynamic> toJson() => _$RequestUpdateToJson(this);
+}
+
 enum Status {
   @JsonValue('CREATED')
   created,
@@ -264,7 +351,7 @@ class OpenRequestsQuery
               variable: VariableNode(name: NameNode(value: 'ids')),
               type: ListTypeNode(
                   type: NamedTypeNode(
-                      name: NameNode(value: 'String'), isNonNull: false),
+                      name: NameNode(value: 'ID'), isNonNull: false),
                   isNonNull: false),
               defaultValue: DefaultValueNode(value: null),
               directives: [])
@@ -277,11 +364,22 @@ class OpenRequestsQuery
               arguments: [
                 ArgumentNode(
                     name: NameNode(value: 'without'),
-                    value: ListValueNode(
-                        values: [EnumValueNode(name: NameNode(value: 'DONE'))]))
+                    value: ListValueNode(values: [
+                      EnumValueNode(name: NameNode(value: 'DONE')),
+                      EnumValueNode(name: NameNode(value: 'REJECTED'))
+                    ])),
+                ArgumentNode(
+                    name: NameNode(value: 'processor'),
+                    value: VariableNode(name: NameNode(value: 'ids')))
               ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
                 FieldNode(
                     name: NameNode(value: 'status'),
                     alias: null,
@@ -479,4 +577,84 @@ class NewRequestMutation
   @override
   NewRequest$Mutation parse(Map<String, dynamic> json) =>
       NewRequest$Mutation.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class UpdateRequestArguments extends JsonSerializable with EquatableMixin {
+  UpdateRequestArguments({@required this.request});
+
+  @override
+  factory UpdateRequestArguments.fromJson(Map<String, dynamic> json) =>
+      _$UpdateRequestArgumentsFromJson(json);
+
+  final RequestUpdate request;
+
+  @override
+  List<Object> get props => [request];
+  @override
+  Map<String, dynamic> toJson() => _$UpdateRequestArgumentsToJson(this);
+}
+
+class UpdateRequestMutation
+    extends GraphQLQuery<UpdateRequest$Mutation, UpdateRequestArguments> {
+  UpdateRequestMutation({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.mutation,
+        name: NameNode(value: 'update_request'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'request')),
+              type: NamedTypeNode(
+                  name: NameNode(value: 'RequestUpdate'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'update'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'request'),
+                    value: VariableNode(name: NameNode(value: 'request')))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'status'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'title'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'creationDate'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'update_request';
+
+  @override
+  final UpdateRequestArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  UpdateRequest$Mutation parse(Map<String, dynamic> json) =>
+      UpdateRequest$Mutation.fromJson(json);
 }

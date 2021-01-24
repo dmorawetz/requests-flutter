@@ -8,6 +8,7 @@ import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/bloc/request_form_bloc.dart';
 import 'package:requests/requests/creation/bloc/request_form_event.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
+import 'package:requests/requests/creation/creation_success_web_page.dart';
 import 'package:requests/requests/creation/image_select_page.dart';
 
 class RequestForm extends StatelessWidget {
@@ -18,6 +19,8 @@ class RequestForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,7 +41,8 @@ class RequestForm extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 98, top: 98),
+              padding: EdgeInsets.only(
+                  left: kIsWeb ? mq.size.width / 2 - 100 : 98, top: 98),
               child: Text(
                 isEdit ? 'Change\nyour\nrequest' : 'Launch a\nnew\nrequest',
                 style: Theme.of(context).textTheme.headline1.copyWith(
@@ -104,16 +108,16 @@ class RequestForm extends StatelessWidget {
             leading: Icon(Icons.mail),
             title: BlocBuilder<RequestFormBloc, RequestFormState>(
               buildWhen: (old, next) => next.maybeMap(
-                nameChanged: (_) => true,
+                mailChanged: (_) => true,
                 orElse: () => false,
               ),
               builder: (context, state) => TextFormField(
                 onChanged: (val) {
                   BlocProvider.of<RequestFormBloc>(context)
-                      .add(RequestFormEvent.changeName(val));
+                      .add(RequestFormEvent.changeMail(val));
                 },
                 validator: requiredValidator,
-                initialValue: state.req.creator,
+                initialValue: state.req.creatorEmail,
                 decoration: InputDecoration(
                   hintText: 'Your email',
                   filled: kIsWeb,
@@ -232,6 +236,7 @@ class RequestForm extends StatelessWidget {
           leading: Icon(Icons.camera_alt),
           title: Text('Add image'),
           onTap: () async {
+            if (kIsWeb) return;
             Navigator.push(
               context,
               new MaterialPageRoute(
@@ -244,7 +249,9 @@ class RequestForm extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.mic),
           title: Text('Add audio'),
-          onTap: () {},
+          onTap: () {
+            if (kIsWeb) return;
+          },
         ),
         SizedBox(
           height: 25,
@@ -254,8 +261,10 @@ class RequestForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: RaisedButton(
               onPressed: () {
-                BlocProvider.of<RequestFormBloc>(context)
-                    .add(RequestFormEvent.save());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CreationSuccessWebPage()));
               },
               textTheme: ButtonTextTheme.primary,
               color: Theme.of(context).primaryColor,

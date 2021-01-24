@@ -6,6 +6,7 @@ part 'request_form_event.freezed.dart';
 abstract class RequestFormEvent with _$RequestFormEvent {
   const factory RequestFormEvent.save() = Save;
   const factory RequestFormEvent.changeName(String name) = ChangeName;
+  const factory RequestFormEvent.changeMail(String email) = ChangeMail;
   const factory RequestFormEvent.changeDescription(String description) =
       ChangeDescription;
   const factory RequestFormEvent.changeDate(DateTime date) = ChangeDate;

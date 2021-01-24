@@ -84,10 +84,21 @@ class _CameraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final deviceRatio = size.width / size.height;
+
     return Stack(
       alignment: AlignmentDirectional.bottomStart,
       children: [
-        CameraPreview(controller),
+        Transform.scale(
+          scale: controller.value.aspectRatio / deviceRatio,
+          child: Center(
+            child: AspectRatio(
+              aspectRatio: controller.value.aspectRatio,
+              child: CameraPreview(controller),
+            ),
+          ),
+        ),
         Material(
           color: Colors.black.withAlpha(78),
           child: Padding(

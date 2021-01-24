@@ -13,8 +13,7 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
             ? RequestModel.fromGraphql(request)
             : RequestModel(
                 dueDate: DateTime.now().add(Duration(days: 7)),
-                creator: "Daniel",
-                creatorEmail: "")));
+              )));
 
   @override
   Stream<RequestFormState> mapEventToState(RequestFormEvent event) async* {
@@ -33,6 +32,10 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
       changeName: (ChangeName value) async* {
         yield RequestFormState.nameChanged(// TODO fix naming
             state.req.copyWith(title: value.name));
+      },
+      changeMail: (ChangeMail value) async* {
+        yield RequestFormState.mailChanged(
+            state.req.copyWith(creatorEmail: value.email));
       },
       changeDescription: (ChangeDescription value) async* {
         yield RequestFormState.descriptionChanged(

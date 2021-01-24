@@ -25,6 +25,7 @@ Map<String, dynamic> _$OpenRequests$Query$Requests$CreatorToJson(
 OpenRequests$Query$Requests _$OpenRequests$Query$RequestsFromJson(
     Map<String, dynamic> json) {
   return OpenRequests$Query$Requests()
+    ..id = json['id'] as String
     ..status = _$enumDecodeNullable(_$StatusEnumMap, json['status'],
         unknownValue: Status.artemisUnknown)
     ..title = json['title'] as String
@@ -50,6 +51,7 @@ OpenRequests$Query$Requests _$OpenRequests$Query$RequestsFromJson(
 Map<String, dynamic> _$OpenRequests$Query$RequestsToJson(
         OpenRequests$Query$Requests instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'status': _$StatusEnumMap[instance.status],
       'title': instance.title,
       'creator': instance.creator?.toJson(),
@@ -227,6 +229,76 @@ Map<String, dynamic> _$RequestInputToJson(RequestInput instance) =>
       'attachments': instance.attachments?.map((e) => e?.toJson())?.toList(),
     };
 
+UpdateRequest$Mutation$Update _$UpdateRequest$Mutation$UpdateFromJson(
+    Map<String, dynamic> json) {
+  return UpdateRequest$Mutation$Update()
+    ..status = _$enumDecodeNullable(_$StatusEnumMap, json['status'],
+        unknownValue: Status.artemisUnknown)
+    ..title = json['title'] as String
+    ..creationDate = json['creationDate'] == null
+        ? null
+        : DateTime.parse(json['creationDate'] as String);
+}
+
+Map<String, dynamic> _$UpdateRequest$Mutation$UpdateToJson(
+        UpdateRequest$Mutation$Update instance) =>
+    <String, dynamic>{
+      'status': _$StatusEnumMap[instance.status],
+      'title': instance.title,
+      'creationDate': instance.creationDate?.toIso8601String(),
+    };
+
+UpdateRequest$Mutation _$UpdateRequest$MutationFromJson(
+    Map<String, dynamic> json) {
+  return UpdateRequest$Mutation()
+    ..update = json['update'] == null
+        ? null
+        : UpdateRequest$Mutation$Update.fromJson(
+            json['update'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$UpdateRequest$MutationToJson(
+        UpdateRequest$Mutation instance) =>
+    <String, dynamic>{
+      'update': instance.update?.toJson(),
+    };
+
+RequestUpdate _$RequestUpdateFromJson(Map<String, dynamic> json) {
+  return RequestUpdate(
+    id: json['id'] as String,
+    status: _$enumDecodeNullable(_$StatusEnumMap, json['status'],
+        unknownValue: Status.artemisUnknown),
+    title: json['title'] as String,
+    description: json['description'] as String,
+    attachments: (json['attachments'] as List)
+        ?.map((e) =>
+            e == null ? null : FileInput.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    priority: _$enumDecodeNullable(_$PriorityEnumMap, json['priority'],
+        unknownValue: Priority.artemisUnknown),
+    lastModified: json['lastModified'] == null
+        ? null
+        : DateTime.parse(json['lastModified'] as String),
+    dueDate: json['dueDate'] == null
+        ? null
+        : DateTime.parse(json['dueDate'] as String),
+    timeEstimation: (json['timeEstimation'] as num)?.toDouble(),
+  );
+}
+
+Map<String, dynamic> _$RequestUpdateToJson(RequestUpdate instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'status': _$StatusEnumMap[instance.status],
+      'title': instance.title,
+      'description': instance.description,
+      'attachments': instance.attachments?.map((e) => e?.toJson())?.toList(),
+      'priority': _$PriorityEnumMap[instance.priority],
+      'lastModified': instance.lastModified?.toIso8601String(),
+      'dueDate': instance.dueDate?.toIso8601String(),
+      'timeEstimation': instance.timeEstimation,
+    };
+
 OpenRequestsArguments _$OpenRequestsArgumentsFromJson(
     Map<String, dynamic> json) {
   return OpenRequestsArguments(
@@ -250,6 +322,21 @@ NewRequestArguments _$NewRequestArgumentsFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$NewRequestArgumentsToJson(
         NewRequestArguments instance) =>
+    <String, dynamic>{
+      'request': instance.request?.toJson(),
+    };
+
+UpdateRequestArguments _$UpdateRequestArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return UpdateRequestArguments(
+    request: json['request'] == null
+        ? null
+        : RequestUpdate.fromJson(json['request'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$UpdateRequestArgumentsToJson(
+        UpdateRequestArguments instance) =>
     <String, dynamic>{
       'request': instance.request?.toJson(),
     };

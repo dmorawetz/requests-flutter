@@ -26,6 +26,13 @@ class _$RequestFormEventTearOff {
   }
 
 // ignore: unused_element
+  ChangeMail changeMail(String email) {
+    return ChangeMail(
+      email,
+    );
+  }
+
+// ignore: unused_element
   ChangeDescription changeDescription(String description) {
     return ChangeDescription(
       description,
@@ -64,6 +71,7 @@ mixin _$RequestFormEvent {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -73,6 +81,7 @@ mixin _$RequestFormEvent {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -83,6 +92,7 @@ mixin _$RequestFormEvent {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -92,6 +102,7 @@ mixin _$RequestFormEvent {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -155,6 +166,7 @@ class _$Save implements Save {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -162,6 +174,7 @@ class _$Save implements Save {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -174,6 +187,7 @@ class _$Save implements Save {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -192,6 +206,7 @@ class _$Save implements Save {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -199,6 +214,7 @@ class _$Save implements Save {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -211,6 +227,7 @@ class _$Save implements Save {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -290,6 +307,7 @@ class _$ChangeName implements ChangeName {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -297,6 +315,7 @@ class _$ChangeName implements ChangeName {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -309,6 +328,7 @@ class _$ChangeName implements ChangeName {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -327,6 +347,7 @@ class _$ChangeName implements ChangeName {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -334,6 +355,7 @@ class _$ChangeName implements ChangeName {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -346,6 +368,7 @@ class _$ChangeName implements ChangeName {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -365,6 +388,150 @@ abstract class ChangeName implements RequestFormEvent {
 
   String get name;
   $ChangeNameCopyWith<ChangeName> get copyWith;
+}
+
+/// @nodoc
+abstract class $ChangeMailCopyWith<$Res> {
+  factory $ChangeMailCopyWith(
+          ChangeMail value, $Res Function(ChangeMail) then) =
+      _$ChangeMailCopyWithImpl<$Res>;
+  $Res call({String email});
+}
+
+/// @nodoc
+class _$ChangeMailCopyWithImpl<$Res>
+    extends _$RequestFormEventCopyWithImpl<$Res>
+    implements $ChangeMailCopyWith<$Res> {
+  _$ChangeMailCopyWithImpl(ChangeMail _value, $Res Function(ChangeMail) _then)
+      : super(_value, (v) => _then(v as ChangeMail));
+
+  @override
+  ChangeMail get _value => super._value as ChangeMail;
+
+  @override
+  $Res call({
+    Object email = freezed,
+  }) {
+    return _then(ChangeMail(
+      email == freezed ? _value.email : email as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ChangeMail implements ChangeMail {
+  const _$ChangeMail(this.email) : assert(email != null);
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'RequestFormEvent.changeMail(email: $email)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChangeMail &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
+
+  @override
+  $ChangeMailCopyWith<ChangeMail> get copyWith =>
+      _$ChangeMailCopyWithImpl<ChangeMail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult save(),
+    @required TResult changeName(String name),
+    @required TResult changeMail(String email),
+    @required TResult changeDescription(String description),
+    @required TResult changeDate(DateTime date),
+    @required TResult changePriority(Priority priority),
+    @required TResult changeEstimation(double hours),
+  }) {
+    assert(save != null);
+    assert(changeName != null);
+    assert(changeMail != null);
+    assert(changeDescription != null);
+    assert(changeDate != null);
+    assert(changePriority != null);
+    assert(changeEstimation != null);
+    return changeMail(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult save(),
+    TResult changeName(String name),
+    TResult changeMail(String email),
+    TResult changeDescription(String description),
+    TResult changeDate(DateTime date),
+    TResult changePriority(Priority priority),
+    TResult changeEstimation(double hours),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeMail != null) {
+      return changeMail(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult save(Save value),
+    @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
+    @required TResult changeDescription(ChangeDescription value),
+    @required TResult changeDate(ChangeDate value),
+    @required TResult changePriority(ChangePriority value),
+    @required TResult changeEstimation(ChangeEstimation value),
+  }) {
+    assert(save != null);
+    assert(changeName != null);
+    assert(changeMail != null);
+    assert(changeDescription != null);
+    assert(changeDate != null);
+    assert(changePriority != null);
+    assert(changeEstimation != null);
+    return changeMail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult save(Save value),
+    TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
+    TResult changeDescription(ChangeDescription value),
+    TResult changeDate(ChangeDate value),
+    TResult changePriority(ChangePriority value),
+    TResult changeEstimation(ChangeEstimation value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeMail != null) {
+      return changeMail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeMail implements RequestFormEvent {
+  const factory ChangeMail(String email) = _$ChangeMail;
+
+  String get email;
+  $ChangeMailCopyWith<ChangeMail> get copyWith;
 }
 
 /// @nodoc
@@ -430,6 +597,7 @@ class _$ChangeDescription implements ChangeDescription {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -437,6 +605,7 @@ class _$ChangeDescription implements ChangeDescription {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -449,6 +618,7 @@ class _$ChangeDescription implements ChangeDescription {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -467,6 +637,7 @@ class _$ChangeDescription implements ChangeDescription {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -474,6 +645,7 @@ class _$ChangeDescription implements ChangeDescription {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -486,6 +658,7 @@ class _$ChangeDescription implements ChangeDescription {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -568,6 +741,7 @@ class _$ChangeDate implements ChangeDate {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -575,6 +749,7 @@ class _$ChangeDate implements ChangeDate {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -587,6 +762,7 @@ class _$ChangeDate implements ChangeDate {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -605,6 +781,7 @@ class _$ChangeDate implements ChangeDate {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -612,6 +789,7 @@ class _$ChangeDate implements ChangeDate {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -624,6 +802,7 @@ class _$ChangeDate implements ChangeDate {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -708,6 +887,7 @@ class _$ChangePriority implements ChangePriority {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -715,6 +895,7 @@ class _$ChangePriority implements ChangePriority {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -727,6 +908,7 @@ class _$ChangePriority implements ChangePriority {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -745,6 +927,7 @@ class _$ChangePriority implements ChangePriority {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -752,6 +935,7 @@ class _$ChangePriority implements ChangePriority {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -764,6 +948,7 @@ class _$ChangePriority implements ChangePriority {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
@@ -847,6 +1032,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   TResult when<TResult extends Object>({
     @required TResult save(),
     @required TResult changeName(String name),
+    @required TResult changeMail(String email),
     @required TResult changeDescription(String description),
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
@@ -854,6 +1040,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -866,6 +1053,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   TResult maybeWhen<TResult extends Object>({
     TResult save(),
     TResult changeName(String name),
+    TResult changeMail(String email),
     TResult changeDescription(String description),
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
@@ -884,6 +1072,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   TResult map<TResult extends Object>({
     @required TResult save(Save value),
     @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
     @required TResult changeDescription(ChangeDescription value),
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
@@ -891,6 +1080,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   }) {
     assert(save != null);
     assert(changeName != null);
+    assert(changeMail != null);
     assert(changeDescription != null);
     assert(changeDate != null);
     assert(changePriority != null);
@@ -903,6 +1093,7 @@ class _$ChangeEstimation implements ChangeEstimation {
   TResult maybeMap<TResult extends Object>({
     TResult save(Save value),
     TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
     TResult changeDescription(ChangeDescription value),
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),

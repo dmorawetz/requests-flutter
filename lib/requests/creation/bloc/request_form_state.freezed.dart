@@ -28,6 +28,13 @@ class _$RequestFormStateTearOff {
   }
 
 // ignore: unused_element
+  MailChanged mailChanged(RequestModel req) {
+    return MailChanged(
+      req,
+    );
+  }
+
+// ignore: unused_element
   DescriptionChanged descriptionChanged(RequestModel req) {
     return DescriptionChanged(
       req,
@@ -97,6 +104,7 @@ mixin _$RequestFormState {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -110,6 +118,7 @@ mixin _$RequestFormState {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -124,6 +133,7 @@ mixin _$RequestFormState {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -137,6 +147,7 @@ mixin _$RequestFormState {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -259,6 +270,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -270,6 +282,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -286,6 +299,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -308,6 +322,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -319,6 +334,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -335,6 +351,7 @@ class _$RequestFormInitial extends RequestFormInitial {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -432,6 +449,7 @@ class _$NameChanged extends NameChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -443,6 +461,7 @@ class _$NameChanged extends NameChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -459,6 +478,7 @@ class _$NameChanged extends NameChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -481,6 +501,7 @@ class _$NameChanged extends NameChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -492,6 +513,7 @@ class _$NameChanged extends NameChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -508,6 +530,7 @@ class _$NameChanged extends NameChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -534,6 +557,185 @@ abstract class NameChanged extends RequestFormState {
   RequestModel get req;
   @override
   $NameChangedCopyWith<NameChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class $MailChangedCopyWith<$Res>
+    implements $RequestFormStateCopyWith<$Res> {
+  factory $MailChangedCopyWith(
+          MailChanged value, $Res Function(MailChanged) then) =
+      _$MailChangedCopyWithImpl<$Res>;
+  @override
+  $Res call({RequestModel req});
+
+  @override
+  $RequestModelCopyWith<$Res> get req;
+}
+
+/// @nodoc
+class _$MailChangedCopyWithImpl<$Res>
+    extends _$RequestFormStateCopyWithImpl<$Res>
+    implements $MailChangedCopyWith<$Res> {
+  _$MailChangedCopyWithImpl(
+      MailChanged _value, $Res Function(MailChanged) _then)
+      : super(_value, (v) => _then(v as MailChanged));
+
+  @override
+  MailChanged get _value => super._value as MailChanged;
+
+  @override
+  $Res call({
+    Object req = freezed,
+  }) {
+    return _then(MailChanged(
+      req == freezed ? _value.req : req as RequestModel,
+    ));
+  }
+}
+
+/// @nodoc
+class _$MailChanged extends MailChanged {
+  const _$MailChanged(this.req)
+      : assert(req != null),
+        super._();
+
+  @override
+  final RequestModel req;
+
+  @override
+  String toString() {
+    return 'RequestFormState.mailChanged(req: $req)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is MailChanged &&
+            (identical(other.req, req) ||
+                const DeepCollectionEquality().equals(other.req, req)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(req);
+
+  @override
+  $MailChangedCopyWith<MailChanged> get copyWith =>
+      _$MailChangedCopyWithImpl<MailChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(RequestModel req),
+    @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
+    @required TResult descriptionChanged(RequestModel req),
+    @required TResult dateChanged(RequestModel req),
+    @required TResult priorityChanged(RequestModel req),
+    @required TResult timeEstimationChanged(RequestModel req),
+    @required TResult imagesChanged(RequestModel req),
+    @required TResult audioChanged(RequestModel req),
+    @required TResult saved(RequestModel req),
+    @required TResult error(RequestModel req, String msg),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(mailChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    assert(error != null);
+    return mailChanged(req);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(RequestModel req),
+    TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
+    TResult descriptionChanged(RequestModel req),
+    TResult dateChanged(RequestModel req),
+    TResult priorityChanged(RequestModel req),
+    TResult timeEstimationChanged(RequestModel req),
+    TResult imagesChanged(RequestModel req),
+    TResult audioChanged(RequestModel req),
+    TResult saved(RequestModel req),
+    TResult error(RequestModel req, String msg),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (mailChanged != null) {
+      return mailChanged(req);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(RequestFormInitial value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
+    @required TResult descriptionChanged(DescriptionChanged value),
+    @required TResult dateChanged(DateChanged value),
+    @required TResult priorityChanged(PriorityChanged value),
+    @required TResult timeEstimationChanged(TimeEstimationChanged value),
+    @required TResult imagesChanged(ImagesChanged value),
+    @required TResult audioChanged(AudioChanged value),
+    @required TResult saved(Saved value),
+    @required TResult error(RequestFormStateError value),
+  }) {
+    assert(initial != null);
+    assert(nameChanged != null);
+    assert(mailChanged != null);
+    assert(descriptionChanged != null);
+    assert(dateChanged != null);
+    assert(priorityChanged != null);
+    assert(timeEstimationChanged != null);
+    assert(imagesChanged != null);
+    assert(audioChanged != null);
+    assert(saved != null);
+    assert(error != null);
+    return mailChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(RequestFormInitial value),
+    TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
+    TResult descriptionChanged(DescriptionChanged value),
+    TResult dateChanged(DateChanged value),
+    TResult priorityChanged(PriorityChanged value),
+    TResult timeEstimationChanged(TimeEstimationChanged value),
+    TResult imagesChanged(ImagesChanged value),
+    TResult audioChanged(AudioChanged value),
+    TResult saved(Saved value),
+    TResult error(RequestFormStateError value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (mailChanged != null) {
+      return mailChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MailChanged extends RequestFormState {
+  const MailChanged._() : super._();
+  const factory MailChanged(RequestModel req) = _$MailChanged;
+
+  @override
+  RequestModel get req;
+  @override
+  $MailChangedCopyWith<MailChanged> get copyWith;
 }
 
 /// @nodoc
@@ -605,6 +807,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -616,6 +819,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -632,6 +836,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -654,6 +859,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -665,6 +871,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -681,6 +888,7 @@ class _$DescriptionChanged extends DescriptionChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -778,6 +986,7 @@ class _$DateChanged extends DateChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -789,6 +998,7 @@ class _$DateChanged extends DateChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -805,6 +1015,7 @@ class _$DateChanged extends DateChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -827,6 +1038,7 @@ class _$DateChanged extends DateChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -838,6 +1050,7 @@ class _$DateChanged extends DateChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -854,6 +1067,7 @@ class _$DateChanged extends DateChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -951,6 +1165,7 @@ class _$PriorityChanged extends PriorityChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -962,6 +1177,7 @@ class _$PriorityChanged extends PriorityChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -978,6 +1194,7 @@ class _$PriorityChanged extends PriorityChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1000,6 +1217,7 @@ class _$PriorityChanged extends PriorityChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1011,6 +1229,7 @@ class _$PriorityChanged extends PriorityChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1027,6 +1246,7 @@ class _$PriorityChanged extends PriorityChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -1125,6 +1345,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -1136,6 +1357,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1152,6 +1374,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1174,6 +1397,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1185,6 +1409,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1201,6 +1426,7 @@ class _$TimeEstimationChanged extends TimeEstimationChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -1299,6 +1525,7 @@ class _$ImagesChanged extends ImagesChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -1310,6 +1537,7 @@ class _$ImagesChanged extends ImagesChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1326,6 +1554,7 @@ class _$ImagesChanged extends ImagesChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1348,6 +1577,7 @@ class _$ImagesChanged extends ImagesChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1359,6 +1589,7 @@ class _$ImagesChanged extends ImagesChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1375,6 +1606,7 @@ class _$ImagesChanged extends ImagesChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -1472,6 +1704,7 @@ class _$AudioChanged extends AudioChanged {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -1483,6 +1716,7 @@ class _$AudioChanged extends AudioChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1499,6 +1733,7 @@ class _$AudioChanged extends AudioChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1521,6 +1756,7 @@ class _$AudioChanged extends AudioChanged {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1532,6 +1768,7 @@ class _$AudioChanged extends AudioChanged {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1548,6 +1785,7 @@ class _$AudioChanged extends AudioChanged {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -1641,6 +1879,7 @@ class _$Saved extends Saved {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -1652,6 +1891,7 @@ class _$Saved extends Saved {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1668,6 +1908,7 @@ class _$Saved extends Saved {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1690,6 +1931,7 @@ class _$Saved extends Saved {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1701,6 +1943,7 @@ class _$Saved extends Saved {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1717,6 +1960,7 @@ class _$Saved extends Saved {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),
@@ -1824,6 +2068,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   TResult when<TResult extends Object>({
     @required TResult initial(RequestModel req),
     @required TResult nameChanged(RequestModel req),
+    @required TResult mailChanged(RequestModel req),
     @required TResult descriptionChanged(RequestModel req),
     @required TResult dateChanged(RequestModel req),
     @required TResult priorityChanged(RequestModel req),
@@ -1835,6 +2080,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1851,6 +2097,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(RequestModel req),
     TResult nameChanged(RequestModel req),
+    TResult mailChanged(RequestModel req),
     TResult descriptionChanged(RequestModel req),
     TResult dateChanged(RequestModel req),
     TResult priorityChanged(RequestModel req),
@@ -1873,6 +2120,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   TResult map<TResult extends Object>({
     @required TResult initial(RequestFormInitial value),
     @required TResult nameChanged(NameChanged value),
+    @required TResult mailChanged(MailChanged value),
     @required TResult descriptionChanged(DescriptionChanged value),
     @required TResult dateChanged(DateChanged value),
     @required TResult priorityChanged(PriorityChanged value),
@@ -1884,6 +2132,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   }) {
     assert(initial != null);
     assert(nameChanged != null);
+    assert(mailChanged != null);
     assert(descriptionChanged != null);
     assert(dateChanged != null);
     assert(priorityChanged != null);
@@ -1900,6 +2149,7 @@ class _$RequestFormStateError extends RequestFormStateError {
   TResult maybeMap<TResult extends Object>({
     TResult initial(RequestFormInitial value),
     TResult nameChanged(NameChanged value),
+    TResult mailChanged(MailChanged value),
     TResult descriptionChanged(DescriptionChanged value),
     TResult dateChanged(DateChanged value),
     TResult priorityChanged(PriorityChanged value),

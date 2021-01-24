@@ -9,6 +9,7 @@ abstract class RequestFormState with _$RequestFormState {
   const RequestFormState._();
   const factory RequestFormState.initial(RequestModel req) = RequestFormInitial;
   const factory RequestFormState.nameChanged(RequestModel req) = NameChanged;
+  const factory RequestFormState.mailChanged(RequestModel req) = MailChanged;
   const factory RequestFormState.descriptionChanged(RequestModel req) =
       DescriptionChanged;
   const factory RequestFormState.dateChanged(RequestModel req) = DateChanged;

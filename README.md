@@ -2,6 +2,12 @@
 
 Stay on-top of your todos.
 
+## Run local test web server
+
+```bash
+flutter run -d web-server --web-hostname 0.0.0.0 --dart-define=FLUTTER_WEB_USE_SKIA=true
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

@@ -8,8 +8,8 @@ import 'package:requests/requests/creation/widgets/request_form.dart';
 class CreationWebPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      //create: (context) => RequestFormBloc(GraphQLProvider.of(context).value),
+    return BlocProvider.value(
+      value: RequestFormBloc(GraphQLProvider.of(context).value, null),
       child: Scaffold(
         body: BlocBuilder<RequestFormBloc, RequestFormState>(
           buildWhen: (prev, curr) => curr.maybeMap(
@@ -23,7 +23,7 @@ class CreationWebPage extends StatelessWidget {
                     ? _ConfirmationPage()
                     : ListView(
                         children: [
-                          _Title(),
+                          // _Title(),
                           RequestForm(),
                           SizedBox(
                             height: 75,

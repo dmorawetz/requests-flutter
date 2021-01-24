@@ -25,7 +25,7 @@ class GraphqlProvider extends StatelessWidget {
           cache: InMemoryCache(),
           defaultPolicies: DefaultPolicies(
             query: Policies(
-              fetch: FetchPolicy.cacheAndNetwork,
+              fetch: FetchPolicy.networkOnly,
             ),
           ),
         ),
