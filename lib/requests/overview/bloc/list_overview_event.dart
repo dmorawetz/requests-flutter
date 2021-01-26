@@ -10,4 +10,6 @@ abstract class ListOverviewEvent with _$ListOverviewEvent {
       OpenRequests$Query$Requests request) = MarkDone;
   const factory ListOverviewEvent.markRejected(
       OpenRequests$Query$Requests request) = MarkRejected;
+  const factory ListOverviewEvent.setStatus(
+      OpenRequests$Query$Requests request, Status status) = SetStatus;
 }

@@ -31,6 +31,14 @@ class _$ListOverviewEventTearOff {
       request,
     );
   }
+
+// ignore: unused_element
+  SetStatus setStatus(OpenRequests$Query$Requests request, Status status) {
+    return SetStatus(
+      request,
+      status,
+    );
+  }
 }
 
 /// @nodoc
@@ -44,12 +52,15 @@ mixin _$ListOverviewEvent {
     @required TResult reload(),
     @required TResult markDone(OpenRequests$Query$Requests request),
     @required TResult markRejected(OpenRequests$Query$Requests request),
+    @required
+        TResult setStatus(OpenRequests$Query$Requests request, Status status),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult reload(),
     TResult markDone(OpenRequests$Query$Requests request),
     TResult markRejected(OpenRequests$Query$Requests request),
+    TResult setStatus(OpenRequests$Query$Requests request, Status status),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -57,12 +68,14 @@ mixin _$ListOverviewEvent {
     @required TResult reload(Reload value),
     @required TResult markDone(MarkDone value),
     @required TResult markRejected(MarkRejected value),
+    @required TResult setStatus(SetStatus value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult reload(Reload value),
     TResult markDone(MarkDone value),
     TResult markRejected(MarkRejected value),
+    TResult setStatus(SetStatus value),
     @required TResult orElse(),
   });
 }
@@ -123,10 +136,13 @@ class _$Reload implements Reload {
     @required TResult reload(),
     @required TResult markDone(OpenRequests$Query$Requests request),
     @required TResult markRejected(OpenRequests$Query$Requests request),
+    @required
+        TResult setStatus(OpenRequests$Query$Requests request, Status status),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return reload();
   }
 
@@ -136,6 +152,7 @@ class _$Reload implements Reload {
     TResult reload(),
     TResult markDone(OpenRequests$Query$Requests request),
     TResult markRejected(OpenRequests$Query$Requests request),
+    TResult setStatus(OpenRequests$Query$Requests request, Status status),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -151,10 +168,12 @@ class _$Reload implements Reload {
     @required TResult reload(Reload value),
     @required TResult markDone(MarkDone value),
     @required TResult markRejected(MarkRejected value),
+    @required TResult setStatus(SetStatus value),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return reload(this);
   }
 
@@ -164,6 +183,7 @@ class _$Reload implements Reload {
     TResult reload(Reload value),
     TResult markDone(MarkDone value),
     TResult markRejected(MarkRejected value),
+    TResult setStatus(SetStatus value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -240,10 +260,13 @@ class _$MarkDone implements MarkDone {
     @required TResult reload(),
     @required TResult markDone(OpenRequests$Query$Requests request),
     @required TResult markRejected(OpenRequests$Query$Requests request),
+    @required
+        TResult setStatus(OpenRequests$Query$Requests request, Status status),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return markDone(request);
   }
 
@@ -253,6 +276,7 @@ class _$MarkDone implements MarkDone {
     TResult reload(),
     TResult markDone(OpenRequests$Query$Requests request),
     TResult markRejected(OpenRequests$Query$Requests request),
+    TResult setStatus(OpenRequests$Query$Requests request, Status status),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -268,10 +292,12 @@ class _$MarkDone implements MarkDone {
     @required TResult reload(Reload value),
     @required TResult markDone(MarkDone value),
     @required TResult markRejected(MarkRejected value),
+    @required TResult setStatus(SetStatus value),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return markDone(this);
   }
 
@@ -281,6 +307,7 @@ class _$MarkDone implements MarkDone {
     TResult reload(Reload value),
     TResult markDone(MarkDone value),
     TResult markRejected(MarkRejected value),
+    TResult setStatus(SetStatus value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -363,10 +390,13 @@ class _$MarkRejected implements MarkRejected {
     @required TResult reload(),
     @required TResult markDone(OpenRequests$Query$Requests request),
     @required TResult markRejected(OpenRequests$Query$Requests request),
+    @required
+        TResult setStatus(OpenRequests$Query$Requests request, Status status),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return markRejected(request);
   }
 
@@ -376,6 +406,7 @@ class _$MarkRejected implements MarkRejected {
     TResult reload(),
     TResult markDone(OpenRequests$Query$Requests request),
     TResult markRejected(OpenRequests$Query$Requests request),
+    TResult setStatus(OpenRequests$Query$Requests request, Status status),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -391,10 +422,12 @@ class _$MarkRejected implements MarkRejected {
     @required TResult reload(Reload value),
     @required TResult markDone(MarkDone value),
     @required TResult markRejected(MarkRejected value),
+    @required TResult setStatus(SetStatus value),
   }) {
     assert(reload != null);
     assert(markDone != null);
     assert(markRejected != null);
+    assert(setStatus != null);
     return markRejected(this);
   }
 
@@ -404,6 +437,7 @@ class _$MarkRejected implements MarkRejected {
     TResult reload(Reload value),
     TResult markDone(MarkDone value),
     TResult markRejected(MarkRejected value),
+    TResult setStatus(SetStatus value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -420,4 +454,145 @@ abstract class MarkRejected implements ListOverviewEvent {
 
   OpenRequests$Query$Requests get request;
   $MarkRejectedCopyWith<MarkRejected> get copyWith;
+}
+
+/// @nodoc
+abstract class $SetStatusCopyWith<$Res> {
+  factory $SetStatusCopyWith(SetStatus value, $Res Function(SetStatus) then) =
+      _$SetStatusCopyWithImpl<$Res>;
+  $Res call({OpenRequests$Query$Requests request, Status status});
+}
+
+/// @nodoc
+class _$SetStatusCopyWithImpl<$Res>
+    extends _$ListOverviewEventCopyWithImpl<$Res>
+    implements $SetStatusCopyWith<$Res> {
+  _$SetStatusCopyWithImpl(SetStatus _value, $Res Function(SetStatus) _then)
+      : super(_value, (v) => _then(v as SetStatus));
+
+  @override
+  SetStatus get _value => super._value as SetStatus;
+
+  @override
+  $Res call({
+    Object request = freezed,
+    Object status = freezed,
+  }) {
+    return _then(SetStatus(
+      request == freezed
+          ? _value.request
+          : request as OpenRequests$Query$Requests,
+      status == freezed ? _value.status : status as Status,
+    ));
+  }
+}
+
+/// @nodoc
+class _$SetStatus implements SetStatus {
+  const _$SetStatus(this.request, this.status)
+      : assert(request != null),
+        assert(status != null);
+
+  @override
+  final OpenRequests$Query$Requests request;
+  @override
+  final Status status;
+
+  @override
+  String toString() {
+    return 'ListOverviewEvent.setStatus(request: $request, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SetStatus &&
+            (identical(other.request, request) ||
+                const DeepCollectionEquality()
+                    .equals(other.request, request)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(request) ^
+      const DeepCollectionEquality().hash(status);
+
+  @override
+  $SetStatusCopyWith<SetStatus> get copyWith =>
+      _$SetStatusCopyWithImpl<SetStatus>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult reload(),
+    @required TResult markDone(OpenRequests$Query$Requests request),
+    @required TResult markRejected(OpenRequests$Query$Requests request),
+    @required
+        TResult setStatus(OpenRequests$Query$Requests request, Status status),
+  }) {
+    assert(reload != null);
+    assert(markDone != null);
+    assert(markRejected != null);
+    assert(setStatus != null);
+    return setStatus(request, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult reload(),
+    TResult markDone(OpenRequests$Query$Requests request),
+    TResult markRejected(OpenRequests$Query$Requests request),
+    TResult setStatus(OpenRequests$Query$Requests request, Status status),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (setStatus != null) {
+      return setStatus(request, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult reload(Reload value),
+    @required TResult markDone(MarkDone value),
+    @required TResult markRejected(MarkRejected value),
+    @required TResult setStatus(SetStatus value),
+  }) {
+    assert(reload != null);
+    assert(markDone != null);
+    assert(markRejected != null);
+    assert(setStatus != null);
+    return setStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult reload(Reload value),
+    TResult markDone(MarkDone value),
+    TResult markRejected(MarkRejected value),
+    TResult setStatus(SetStatus value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (setStatus != null) {
+      return setStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetStatus implements ListOverviewEvent {
+  const factory SetStatus(OpenRequests$Query$Requests request, Status status) =
+      _$SetStatus;
+
+  OpenRequests$Query$Requests get request;
+  Status get status;
+  $SetStatusCopyWith<SetStatus> get copyWith;
 }

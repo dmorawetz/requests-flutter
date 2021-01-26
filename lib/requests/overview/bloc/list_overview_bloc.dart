@@ -15,6 +15,7 @@ class ListOverviewBloc extends Bloc<ListOverviewEvent, ListOverviewState> {
       reload: reload,
       markDone: markDone,
       markRejected: markRejected,
+      setStatus: setStatus,
     );
   }
 
@@ -51,6 +52,12 @@ class ListOverviewBloc extends Bloc<ListOverviewEvent, ListOverviewState> {
     value.request.status = Status.rejected;
 
     yield* updateRequest(value.request, _data);
+  }
+
+  Stream<ListOverviewState> setStatus(SetStatus value) async* {
+    value.request.status = value.status;
+
+    yield* updateRequest(value.request, state.data);
   }
 
   Stream<ListOverviewState> updateRequest(

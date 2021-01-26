@@ -11,11 +11,13 @@ const priorities = ["LOW", "MEDIUM", "HIGH"];
 class ListOverviewPopulated extends StatelessWidget {
   final List<OpenRequests$Query$Requests> requests;
   final OpenRequests$Query$UserStatistics userStatistics;
+  final ListOverviewBloc bloc;
 
   const ListOverviewPopulated({
     Key key,
     @required this.requests,
     @required this.userStatistics,
+    @required this.bloc,
   }) : super(key: key);
 
   @override
@@ -208,6 +210,7 @@ class ListOverviewPopulated extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => RequestDetailPage(
                                   request: request,
+                                  bloc: bloc,
                                 )));
                   },
                   leading: Icon(

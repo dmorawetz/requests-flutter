@@ -180,6 +180,8 @@ class ListOverviewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.watch<ListOverviewBloc>();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 56.0),
       child: BlocConsumer<ListOverviewBloc, ListOverviewState>(
@@ -206,6 +208,7 @@ class ListOverviewView extends StatelessWidget {
         return ListOverviewPopulated(
           requests: allRequests,
           userStatistics: userStatistics,
+          bloc: bloc,
         );
       }),
     );

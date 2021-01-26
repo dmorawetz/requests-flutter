@@ -49,6 +49,8 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
   }
 
   Stream<RequestFormState> save(Save s) async* {
+    // TODO differentiate between create or edit
+
     final result = await graphQLClient.mutate(MutationOptions(
         documentNode: NewRequestMutation(
           variables: NewRequestArguments(
