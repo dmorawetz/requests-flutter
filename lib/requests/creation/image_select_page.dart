@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -70,7 +72,7 @@ class _ImageSelectPageState extends State<ImageSelectPage> {
   }
 }
 
-class _CameraView extends StatelessWidget {
+class _CameraView extends StatefulWidget {
   final CameraController controller;
   final VoidCallback onSwitchCamera;
   final bool hasMultipleCameras;
@@ -83,6 +85,13 @@ class _CameraView extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  __CameraViewState createState() => __CameraViewState();
+}
+
+class __CameraViewState extends State<_CameraView> {
+  bool takingPicture = false;
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final deviceRatio = size.width / size.height;
@@ -91,11 +100,11 @@ class _CameraView extends StatelessWidget {
       alignment: AlignmentDirectional.bottomStart,
       children: [
         Transform.scale(
-          scale: controller.value.aspectRatio / deviceRatio,
+          scale: widget.controller.value.aspectRatio / deviceRatio,
           child: Center(
             child: AspectRatio(
-              aspectRatio: controller.value.aspectRatio,
-              child: CameraPreview(controller),
+              aspectRatio: widget.controller.value.aspectRatio,
+              child: CameraPreview(widget.controller),
             ),
           ),
         ),
@@ -109,7 +118,9 @@ class _CameraView extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () async {
-                    await ImagePicker().getImage(source: ImageSource.gallery);
+                    var picture = await ImagePicker()
+                        .getImage(source: ImageSource.gallery);
+                    Navigator.pop(context, picture.path);
                   },
                   icon: Icon(
                     Icons.photo_library,
@@ -124,11 +135,17 @@ class _CameraView extends StatelessWidget {
                   iconSize: 56,
                   splashColor: Colors.pink,
                   tooltip: 'Take picture',
-                  onPressed: () {},
+                  onPressed: () async {
+                    setState(() {
+                      takingPicture = true;
+                    });
+                    var picture = await widget.controller.takePicture();
+                    Navigator.pop(context, picture.path);
+                  },
                 ),
-                if (hasMultipleCameras)
+                if (widget.hasMultipleCameras)
                   IconButton(
-                    onPressed: onSwitchCamera,
+                    onPressed: widget.onSwitchCamera,
                     icon: Icon(
                       Icons.switch_camera,
                       color: Colors.white,

@@ -82,9 +82,12 @@ class _RequestsListOverviewPageState extends State<RequestsListOverviewPage> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(context,
+          onPressed: () async {
+            bool result = await Navigator.push(context,
                 MaterialPageRoute(builder: (context) => CreationPage()));
+            if (result)
+              WidgetsBinding.instance
+                  .addPostFrameCallback((_) => _refreshKey.currentState.show());
           },
           icon: Icon(Icons.add),
           label: Text('Add request'),
@@ -112,7 +115,14 @@ class _Header extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Image.network(
-                                "https://docs.morawetz.dev/seafhttp/files/f38412eb-68dc-4fcd-b813-379e3de25010/requests-morawetz-dev-qr.png"),
+                              "https://test.morawetz.dev:9000/requests/requests-morawetz-dev-qr.png",
+                              loadingBuilder: (context, child, event) =>
+                                  Container(
+                                constraints: BoxConstraints(
+                                    minHeight: 300, minWidth: double.infinity),
+                                child: child,
+                              ),
+                            ),
                           ),
                           InkWell(
                             onTap: () {
@@ -186,7 +196,7 @@ class ListOverviewView extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 56.0),
       child: BlocConsumer<ListOverviewBloc, ListOverviewState>(
           listener: (context, state) {
-        if (state is ListOverviewLoaded) {
+        if (state is ListOverviewLoaded || state is ListOverviewError) {
           onLoaded();
         }
       }, builder: (context, state) {

@@ -22,6 +22,21 @@ Map<String, dynamic> _$OpenRequests$Query$Requests$CreatorToJson(
       'email': instance.email,
     };
 
+OpenRequests$Query$Requests$Attachments
+    _$OpenRequests$Query$Requests$AttachmentsFromJson(
+        Map<String, dynamic> json) {
+  return OpenRequests$Query$Requests$Attachments()
+    ..objectName = json['objectName'] as String
+    ..url = json['url'] as String;
+}
+
+Map<String, dynamic> _$OpenRequests$Query$Requests$AttachmentsToJson(
+        OpenRequests$Query$Requests$Attachments instance) =>
+    <String, dynamic>{
+      'objectName': instance.objectName,
+      'url': instance.url,
+    };
+
 OpenRequests$Query$Requests _$OpenRequests$Query$RequestsFromJson(
     Map<String, dynamic> json) {
   return OpenRequests$Query$Requests()
@@ -45,7 +60,13 @@ OpenRequests$Query$Requests _$OpenRequests$Query$RequestsFromJson(
     ..dueDate = json['dueDate'] == null
         ? null
         : DateTime.parse(json['dueDate'] as String)
-    ..timeEstimation = (json['timeEstimation'] as num)?.toDouble();
+    ..timeEstimation = (json['timeEstimation'] as num)?.toDouble()
+    ..attachments = (json['attachments'] as List)
+        ?.map((e) => e == null
+            ? null
+            : OpenRequests$Query$Requests$Attachments.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$OpenRequests$Query$RequestsToJson(
@@ -61,6 +82,7 @@ Map<String, dynamic> _$OpenRequests$Query$RequestsToJson(
       'lastModified': instance.lastModified?.toIso8601String(),
       'dueDate': instance.dueDate?.toIso8601String(),
       'timeEstimation': instance.timeEstimation,
+      'attachments': instance.attachments?.map((e) => e?.toJson())?.toList(),
     };
 
 T _$enumDecode<T>(
@@ -183,14 +205,12 @@ Map<String, dynamic> _$NewRequest$MutationToJson(
 
 FileInput _$FileInputFromJson(Map<String, dynamic> json) {
   return FileInput(
-    filename: json['filename'] as String,
-    url: json['url'] as String,
+    objectName: json['objectName'] as String,
   );
 }
 
 Map<String, dynamic> _$FileInputToJson(FileInput instance) => <String, dynamic>{
-      'filename': instance.filename,
-      'url': instance.url,
+      'objectName': instance.objectName,
     };
 
 RequestInput _$RequestInputFromJson(Map<String, dynamic> json) {
@@ -297,6 +317,35 @@ Map<String, dynamic> _$RequestUpdateToJson(RequestUpdate instance) =>
       'lastModified': instance.lastModified?.toIso8601String(),
       'dueDate': instance.dueDate?.toIso8601String(),
       'timeEstimation': instance.timeEstimation,
+    };
+
+SignedUpload$Query$SignedUpload _$SignedUpload$Query$SignedUploadFromJson(
+    Map<String, dynamic> json) {
+  return SignedUpload$Query$SignedUpload()
+    ..uploadUrl = json['uploadUrl'] as String
+    ..fileUrl = json['fileUrl'] as String
+    ..objectName = json['objectName'] as String;
+}
+
+Map<String, dynamic> _$SignedUpload$Query$SignedUploadToJson(
+        SignedUpload$Query$SignedUpload instance) =>
+    <String, dynamic>{
+      'uploadUrl': instance.uploadUrl,
+      'fileUrl': instance.fileUrl,
+      'objectName': instance.objectName,
+    };
+
+SignedUpload$Query _$SignedUpload$QueryFromJson(Map<String, dynamic> json) {
+  return SignedUpload$Query()
+    ..signedUpload = json['signedUpload'] == null
+        ? null
+        : SignedUpload$Query$SignedUpload.fromJson(
+            json['signedUpload'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$SignedUpload$QueryToJson(SignedUpload$Query instance) =>
+    <String, dynamic>{
+      'signedUpload': instance.signedUpload?.toJson(),
     };
 
 OpenRequestsArguments _$OpenRequestsArgumentsFromJson(

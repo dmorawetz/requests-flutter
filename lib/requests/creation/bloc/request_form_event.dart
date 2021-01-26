@@ -14,4 +14,5 @@ abstract class RequestFormEvent with _$RequestFormEvent {
       ChangePriority;
   const factory RequestFormEvent.changeEstimation(double hours) =
       ChangeEstimation;
+  const factory RequestFormEvent.uploadImage(String path) = UploadImage;
 }

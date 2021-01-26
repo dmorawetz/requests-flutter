@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:requests/data/models/RequestModel.dart';
 import 'package:requests/requests/creation/bloc/request_form_event.dart';
 import 'package:requests/requests/creation/bloc/request_form_state.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
+import 'package:http/http.dart' as http;
 
 class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
   final GraphQLClient graphQLClient;
@@ -45,6 +48,7 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
         yield RequestFormState.priorityChanged(
             state.req.copyWith(priority: value.priority));
       },
+      uploadImage: uploadImage,
     );
   }
 
@@ -66,5 +70,32 @@ class RequestFormBloc extends Bloc<RequestFormEvent, RequestFormState> {
     } else {
       yield RequestFormState.saved(state.req);
     }
+  }
+
+  Stream<RequestFormState> uploadImage(UploadImage s) async* {
+    var result = await graphQLClient.query(
+      QueryOptions(
+        documentNode: SignedUploadQuery().document,
+      ),
+    );
+
+    if (result.hasException) {
+      yield RequestFormState.error(state.req, result.exception.toString());
+      return;
+    }
+    var data = SignedUpload$Query.fromJson(result.data);
+
+    var response = await http.put(data.signedUpload.uploadUrl,
+        body: File(s.path).readAsBytesSync());
+
+    if (response.statusCode != 200) {
+      yield RequestFormState.error(state.req, "image upload failed");
+      return;
+    }
+
+    yield RequestFormState.imagesChanged(state.req.copyWith(attachments: {
+      ...state.req.attachments,
+      ...{data.signedUpload.objectName: data.signedUpload.fileUrl},
+    }));
   }
 }

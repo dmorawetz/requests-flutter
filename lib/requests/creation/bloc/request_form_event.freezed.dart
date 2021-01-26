@@ -59,6 +59,13 @@ class _$RequestFormEventTearOff {
       hours,
     );
   }
+
+// ignore: unused_element
+  UploadImage uploadImage(String path) {
+    return UploadImage(
+      path,
+    );
+  }
 }
 
 /// @nodoc
@@ -76,6 +83,7 @@ mixin _$RequestFormEvent {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -86,6 +94,7 @@ mixin _$RequestFormEvent {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -97,6 +106,7 @@ mixin _$RequestFormEvent {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -107,6 +117,7 @@ mixin _$RequestFormEvent {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   });
 }
@@ -171,6 +182,7 @@ class _$Save implements Save {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -179,6 +191,7 @@ class _$Save implements Save {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return save();
   }
 
@@ -192,6 +205,7 @@ class _$Save implements Save {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -211,6 +225,7 @@ class _$Save implements Save {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -219,6 +234,7 @@ class _$Save implements Save {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return save(this);
   }
 
@@ -232,6 +248,7 @@ class _$Save implements Save {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -312,6 +329,7 @@ class _$ChangeName implements ChangeName {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -320,6 +338,7 @@ class _$ChangeName implements ChangeName {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeName(name);
   }
 
@@ -333,6 +352,7 @@ class _$ChangeName implements ChangeName {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -352,6 +372,7 @@ class _$ChangeName implements ChangeName {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -360,6 +381,7 @@ class _$ChangeName implements ChangeName {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeName(this);
   }
 
@@ -373,6 +395,7 @@ class _$ChangeName implements ChangeName {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -456,6 +479,7 @@ class _$ChangeMail implements ChangeMail {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -464,6 +488,7 @@ class _$ChangeMail implements ChangeMail {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeMail(email);
   }
 
@@ -477,6 +502,7 @@ class _$ChangeMail implements ChangeMail {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -496,6 +522,7 @@ class _$ChangeMail implements ChangeMail {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -504,6 +531,7 @@ class _$ChangeMail implements ChangeMail {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeMail(this);
   }
 
@@ -517,6 +545,7 @@ class _$ChangeMail implements ChangeMail {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -602,6 +631,7 @@ class _$ChangeDescription implements ChangeDescription {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -610,6 +640,7 @@ class _$ChangeDescription implements ChangeDescription {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeDescription(description);
   }
 
@@ -623,6 +654,7 @@ class _$ChangeDescription implements ChangeDescription {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -642,6 +674,7 @@ class _$ChangeDescription implements ChangeDescription {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -650,6 +683,7 @@ class _$ChangeDescription implements ChangeDescription {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeDescription(this);
   }
 
@@ -663,6 +697,7 @@ class _$ChangeDescription implements ChangeDescription {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -746,6 +781,7 @@ class _$ChangeDate implements ChangeDate {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -754,6 +790,7 @@ class _$ChangeDate implements ChangeDate {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeDate(date);
   }
 
@@ -767,6 +804,7 @@ class _$ChangeDate implements ChangeDate {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -786,6 +824,7 @@ class _$ChangeDate implements ChangeDate {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -794,6 +833,7 @@ class _$ChangeDate implements ChangeDate {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeDate(this);
   }
 
@@ -807,6 +847,7 @@ class _$ChangeDate implements ChangeDate {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -892,6 +933,7 @@ class _$ChangePriority implements ChangePriority {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -900,6 +942,7 @@ class _$ChangePriority implements ChangePriority {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changePriority(priority);
   }
 
@@ -913,6 +956,7 @@ class _$ChangePriority implements ChangePriority {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -932,6 +976,7 @@ class _$ChangePriority implements ChangePriority {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -940,6 +985,7 @@ class _$ChangePriority implements ChangePriority {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changePriority(this);
   }
 
@@ -953,6 +999,7 @@ class _$ChangePriority implements ChangePriority {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1037,6 +1084,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     @required TResult changeDate(DateTime date),
     @required TResult changePriority(Priority priority),
     @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -1045,6 +1093,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeEstimation(hours);
   }
 
@@ -1058,6 +1107,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     TResult changeDate(DateTime date),
     TResult changePriority(Priority priority),
     TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1077,6 +1127,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     @required TResult changeDate(ChangeDate value),
     @required TResult changePriority(ChangePriority value),
     @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
   }) {
     assert(save != null);
     assert(changeName != null);
@@ -1085,6 +1136,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     assert(changeDate != null);
     assert(changePriority != null);
     assert(changeEstimation != null);
+    assert(uploadImage != null);
     return changeEstimation(this);
   }
 
@@ -1098,6 +1150,7 @@ class _$ChangeEstimation implements ChangeEstimation {
     TResult changeDate(ChangeDate value),
     TResult changePriority(ChangePriority value),
     TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1113,4 +1166,155 @@ abstract class ChangeEstimation implements RequestFormEvent {
 
   double get hours;
   $ChangeEstimationCopyWith<ChangeEstimation> get copyWith;
+}
+
+/// @nodoc
+abstract class $UploadImageCopyWith<$Res> {
+  factory $UploadImageCopyWith(
+          UploadImage value, $Res Function(UploadImage) then) =
+      _$UploadImageCopyWithImpl<$Res>;
+  $Res call({String path});
+}
+
+/// @nodoc
+class _$UploadImageCopyWithImpl<$Res>
+    extends _$RequestFormEventCopyWithImpl<$Res>
+    implements $UploadImageCopyWith<$Res> {
+  _$UploadImageCopyWithImpl(
+      UploadImage _value, $Res Function(UploadImage) _then)
+      : super(_value, (v) => _then(v as UploadImage));
+
+  @override
+  UploadImage get _value => super._value as UploadImage;
+
+  @override
+  $Res call({
+    Object path = freezed,
+  }) {
+    return _then(UploadImage(
+      path == freezed ? _value.path : path as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$UploadImage implements UploadImage {
+  const _$UploadImage(this.path) : assert(path != null);
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'RequestFormEvent.uploadImage(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UploadImage &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @override
+  $UploadImageCopyWith<UploadImage> get copyWith =>
+      _$UploadImageCopyWithImpl<UploadImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult save(),
+    @required TResult changeName(String name),
+    @required TResult changeMail(String email),
+    @required TResult changeDescription(String description),
+    @required TResult changeDate(DateTime date),
+    @required TResult changePriority(Priority priority),
+    @required TResult changeEstimation(double hours),
+    @required TResult uploadImage(String path),
+  }) {
+    assert(save != null);
+    assert(changeName != null);
+    assert(changeMail != null);
+    assert(changeDescription != null);
+    assert(changeDate != null);
+    assert(changePriority != null);
+    assert(changeEstimation != null);
+    assert(uploadImage != null);
+    return uploadImage(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult save(),
+    TResult changeName(String name),
+    TResult changeMail(String email),
+    TResult changeDescription(String description),
+    TResult changeDate(DateTime date),
+    TResult changePriority(Priority priority),
+    TResult changeEstimation(double hours),
+    TResult uploadImage(String path),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (uploadImage != null) {
+      return uploadImage(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult save(Save value),
+    @required TResult changeName(ChangeName value),
+    @required TResult changeMail(ChangeMail value),
+    @required TResult changeDescription(ChangeDescription value),
+    @required TResult changeDate(ChangeDate value),
+    @required TResult changePriority(ChangePriority value),
+    @required TResult changeEstimation(ChangeEstimation value),
+    @required TResult uploadImage(UploadImage value),
+  }) {
+    assert(save != null);
+    assert(changeName != null);
+    assert(changeMail != null);
+    assert(changeDescription != null);
+    assert(changeDate != null);
+    assert(changePriority != null);
+    assert(changeEstimation != null);
+    assert(uploadImage != null);
+    return uploadImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult save(Save value),
+    TResult changeName(ChangeName value),
+    TResult changeMail(ChangeMail value),
+    TResult changeDescription(ChangeDescription value),
+    TResult changeDate(ChangeDate value),
+    TResult changePriority(ChangePriority value),
+    TResult changeEstimation(ChangeEstimation value),
+    TResult uploadImage(UploadImage value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (uploadImage != null) {
+      return uploadImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImage implements RequestFormEvent {
+  const factory UploadImage(String path) = _$UploadImage;
+
+  String get path;
+  $UploadImageCopyWith<UploadImage> get copyWith;
 }

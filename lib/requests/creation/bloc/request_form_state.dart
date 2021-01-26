@@ -26,15 +26,16 @@ abstract class RequestFormState with _$RequestFormState {
 
   RequestInput toInput() {
     return RequestInput(
-      status: req.status,
-      title: req.title,
-      description: req.description,
-      priority: req.priority,
-      creatorFirstname: req.creator.split(" ")[0],
-      creatorLastname: req.creator,
-      creatorEmail: req.creatorEmail,
-      dueDate: req.dueDate,
-      timeEstimation: req.timeEstimation,
-    );
+        status: req.status,
+        title: req.title,
+        description: req.description,
+        priority: req.priority,
+        creatorFirstname: req.creator.split(" ")[0],
+        creatorLastname: req.creator,
+        creatorEmail: req.creatorEmail,
+        dueDate: req.dueDate,
+        timeEstimation: req.timeEstimation,
+        attachments:
+            req.attachments.keys.map((e) => FileInput(objectName: e)).toList());
   }
 }

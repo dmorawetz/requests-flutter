@@ -22,7 +22,8 @@ class _$RequestModelTearOff {
       String creator = "",
       String creatorEmail = "",
       DateTime dueDate,
-      double timeEstimation = 0.0}) {
+      double timeEstimation = 0.0,
+      Map<String, String> attachments = const {}}) {
     return _RequestModel(
       status: status,
       title: title,
@@ -32,6 +33,7 @@ class _$RequestModelTearOff {
       creatorEmail: creatorEmail,
       dueDate: dueDate,
       timeEstimation: timeEstimation,
+      attachments: attachments,
     );
   }
 }
@@ -50,6 +52,7 @@ mixin _$RequestModel {
   String get creatorEmail;
   DateTime get dueDate;
   double get timeEstimation;
+  Map<String, String> get attachments;
 
   $RequestModelCopyWith<RequestModel> get copyWith;
 }
@@ -67,7 +70,8 @@ abstract class $RequestModelCopyWith<$Res> {
       String creator,
       String creatorEmail,
       DateTime dueDate,
-      double timeEstimation});
+      double timeEstimation,
+      Map<String, String> attachments});
 }
 
 /// @nodoc
@@ -88,6 +92,7 @@ class _$RequestModelCopyWithImpl<$Res> implements $RequestModelCopyWith<$Res> {
     Object creatorEmail = freezed,
     Object dueDate = freezed,
     Object timeEstimation = freezed,
+    Object attachments = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed ? _value.status : status as Status,
@@ -103,6 +108,9 @@ class _$RequestModelCopyWithImpl<$Res> implements $RequestModelCopyWith<$Res> {
       timeEstimation: timeEstimation == freezed
           ? _value.timeEstimation
           : timeEstimation as double,
+      attachments: attachments == freezed
+          ? _value.attachments
+          : attachments as Map<String, String>,
     ));
   }
 }
@@ -122,7 +130,8 @@ abstract class _$RequestModelCopyWith<$Res>
       String creator,
       String creatorEmail,
       DateTime dueDate,
-      double timeEstimation});
+      double timeEstimation,
+      Map<String, String> attachments});
 }
 
 /// @nodoc
@@ -145,6 +154,7 @@ class __$RequestModelCopyWithImpl<$Res> extends _$RequestModelCopyWithImpl<$Res>
     Object creatorEmail = freezed,
     Object dueDate = freezed,
     Object timeEstimation = freezed,
+    Object attachments = freezed,
   }) {
     return _then(_RequestModel(
       status: status == freezed ? _value.status : status as Status,
@@ -160,6 +170,9 @@ class __$RequestModelCopyWithImpl<$Res> extends _$RequestModelCopyWithImpl<$Res>
       timeEstimation: timeEstimation == freezed
           ? _value.timeEstimation
           : timeEstimation as double,
+      attachments: attachments == freezed
+          ? _value.attachments
+          : attachments as Map<String, String>,
     ));
   }
 }
@@ -174,7 +187,8 @@ class _$_RequestModel extends _RequestModel {
       this.creator = "",
       this.creatorEmail = "",
       this.dueDate,
-      this.timeEstimation = 0.0})
+      this.timeEstimation = 0.0,
+      this.attachments = const {}})
       : assert(status != null),
         assert(title != null),
         assert(description != null),
@@ -182,6 +196,7 @@ class _$_RequestModel extends _RequestModel {
         assert(creator != null),
         assert(creatorEmail != null),
         assert(timeEstimation != null),
+        assert(attachments != null),
         super._();
 
   @JsonKey(defaultValue: Status.created)
@@ -207,10 +222,13 @@ class _$_RequestModel extends _RequestModel {
   @JsonKey(defaultValue: 0.0)
   @override
   final double timeEstimation;
+  @JsonKey(defaultValue: const {})
+  @override
+  final Map<String, String> attachments;
 
   @override
   String toString() {
-    return 'RequestModel(status: $status, title: $title, description: $description, priority: $priority, creator: $creator, creatorEmail: $creatorEmail, dueDate: $dueDate, timeEstimation: $timeEstimation)';
+    return 'RequestModel(status: $status, title: $title, description: $description, priority: $priority, creator: $creator, creatorEmail: $creatorEmail, dueDate: $dueDate, timeEstimation: $timeEstimation, attachments: $attachments)';
   }
 
   @override
@@ -238,7 +256,10 @@ class _$_RequestModel extends _RequestModel {
                     .equals(other.dueDate, dueDate)) &&
             (identical(other.timeEstimation, timeEstimation) ||
                 const DeepCollectionEquality()
-                    .equals(other.timeEstimation, timeEstimation)));
+                    .equals(other.timeEstimation, timeEstimation)) &&
+            (identical(other.attachments, attachments) ||
+                const DeepCollectionEquality()
+                    .equals(other.attachments, attachments)));
   }
 
   @override
@@ -251,7 +272,8 @@ class _$_RequestModel extends _RequestModel {
       const DeepCollectionEquality().hash(creator) ^
       const DeepCollectionEquality().hash(creatorEmail) ^
       const DeepCollectionEquality().hash(dueDate) ^
-      const DeepCollectionEquality().hash(timeEstimation);
+      const DeepCollectionEquality().hash(timeEstimation) ^
+      const DeepCollectionEquality().hash(attachments);
 
   @override
   _$RequestModelCopyWith<_RequestModel> get copyWith =>
@@ -268,7 +290,8 @@ abstract class _RequestModel extends RequestModel {
       String creator,
       String creatorEmail,
       DateTime dueDate,
-      double timeEstimation}) = _$_RequestModel;
+      double timeEstimation,
+      Map<String, String> attachments}) = _$_RequestModel;
 
   @override
   Status get status;
@@ -286,6 +309,8 @@ abstract class _RequestModel extends RequestModel {
   DateTime get dueDate;
   @override
   double get timeEstimation;
+  @override
+  Map<String, String> get attachments;
   @override
   _$RequestModelCopyWith<_RequestModel> get copyWith;
 }

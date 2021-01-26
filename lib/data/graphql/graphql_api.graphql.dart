@@ -28,6 +28,24 @@ class OpenRequests$Query$Requests$Creator with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class OpenRequests$Query$Requests$Attachments with EquatableMixin {
+  OpenRequests$Query$Requests$Attachments();
+
+  factory OpenRequests$Query$Requests$Attachments.fromJson(
+          Map<String, dynamic> json) =>
+      _$OpenRequests$Query$Requests$AttachmentsFromJson(json);
+
+  String objectName;
+
+  String url;
+
+  @override
+  List<Object> get props => [objectName, url];
+  Map<String, dynamic> toJson() =>
+      _$OpenRequests$Query$Requests$AttachmentsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class OpenRequests$Query$Requests with EquatableMixin {
   OpenRequests$Query$Requests();
 
@@ -56,6 +74,8 @@ class OpenRequests$Query$Requests with EquatableMixin {
 
   double timeEstimation;
 
+  List<OpenRequests$Query$Requests$Attachments> attachments;
+
   @override
   List<Object> get props => [
         id,
@@ -67,7 +87,8 @@ class OpenRequests$Query$Requests with EquatableMixin {
         priority,
         lastModified,
         dueDate,
-        timeEstimation
+        timeEstimation,
+        attachments
       ];
   Map<String, dynamic> toJson() => _$OpenRequests$Query$RequestsToJson(this);
 }
@@ -145,17 +166,15 @@ class NewRequest$Mutation with EquatableMixin {
 
 @JsonSerializable(explicitToJson: true)
 class FileInput with EquatableMixin {
-  FileInput({this.filename, this.url});
+  FileInput({this.objectName});
 
   factory FileInput.fromJson(Map<String, dynamic> json) =>
       _$FileInputFromJson(json);
 
-  String filename;
-
-  String url;
+  String objectName;
 
   @override
-  List<Object> get props => [filename, url];
+  List<Object> get props => [objectName];
   Map<String, dynamic> toJson() => _$FileInputToJson(this);
 }
 
@@ -296,6 +315,39 @@ class RequestUpdate with EquatableMixin {
         timeEstimation
       ];
   Map<String, dynamic> toJson() => _$RequestUpdateToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SignedUpload$Query$SignedUpload with EquatableMixin {
+  SignedUpload$Query$SignedUpload();
+
+  factory SignedUpload$Query$SignedUpload.fromJson(Map<String, dynamic> json) =>
+      _$SignedUpload$Query$SignedUploadFromJson(json);
+
+  String uploadUrl;
+
+  String fileUrl;
+
+  String objectName;
+
+  @override
+  List<Object> get props => [uploadUrl, fileUrl, objectName];
+  Map<String, dynamic> toJson() =>
+      _$SignedUpload$Query$SignedUploadToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SignedUpload$Query with EquatableMixin {
+  SignedUpload$Query();
+
+  factory SignedUpload$Query.fromJson(Map<String, dynamic> json) =>
+      _$SignedUpload$QueryFromJson(json);
+
+  SignedUpload$Query$SignedUpload signedUpload;
+
+  @override
+  List<Object> get props => [signedUpload];
+  Map<String, dynamic> toJson() => _$SignedUpload$QueryToJson(this);
 }
 
 enum Status {
@@ -452,7 +504,26 @@ class OpenRequestsQuery
                     alias: null,
                     arguments: [],
                     directives: [],
-                    selectionSet: null)
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'attachments'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'objectName'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'url'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ]))
               ])),
           FieldNode(
               name: NameNode(value: 'userStatistics'),
@@ -657,4 +728,54 @@ class UpdateRequestMutation
   @override
   UpdateRequest$Mutation parse(Map<String, dynamic> json) =>
       UpdateRequest$Mutation.fromJson(json);
+}
+
+class SignedUploadQuery
+    extends GraphQLQuery<SignedUpload$Query, JsonSerializable> {
+  SignedUploadQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'signedUpload'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'signedUpload'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'uploadUrl'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'fileUrl'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'objectName'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'signedUpload';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  SignedUpload$Query parse(Map<String, dynamic> json) =>
+      SignedUpload$Query.fromJson(json);
 }

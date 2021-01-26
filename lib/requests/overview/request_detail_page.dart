@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:requests/common/views/image_detail_page.dart';
+import 'package:requests/common/widgets/image_preview_tile.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/creation_page.dart';
 import 'package:requests/requests/overview/bloc/list_overview_bloc.dart';
@@ -46,9 +50,13 @@ class _RequestDetailPageState extends State<RequestDetailPage> {
               leading: Icon(Icons.notes),
               title: Padding(
                   padding: EdgeInsets.only(top: 12),
-                  child: Text(
-                    widget.request.description,
-                    maxLines: 20,
+                  child: Linkify(
+                    text: widget.request.description,
+                    onOpen: (elem) => print('${elem.url} clicked'),
+                    linkStyle: Theme.of(context).textTheme.bodyText2.copyWith(
+                          color: Colors.pink,
+                          fontWeight: FontWeight.bold,
+                        ),
                   )),
             ),
           if (widget.request.dueDate != null)
@@ -198,23 +206,10 @@ class _RequestDetailPageState extends State<RequestDetailPage> {
               ],
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.image),
-            title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(18),
-                child: Container(
-                  color: Colors.black26,
-                  height: 150,
-                  child: Image.network(
-                    "https://images.unsplash.com/photo-1608026689581-ebf7028fbf82?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          if (widget.request.attachments != null)
+            ImagePreviewTile(
+              urls: widget.request.attachments.map((e) => e.url).toList(),
+            )
         ],
       ),
     );

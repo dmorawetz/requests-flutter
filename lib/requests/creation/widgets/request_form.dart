@@ -1,8 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:requests/common/widgets/image_preview_tile.dart';
 import 'package:requests/common/widgets/radio_list_dialog.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
 import 'package:requests/requests/creation/bloc/request_form_bloc.dart';
@@ -237,12 +239,16 @@ class RequestForm extends StatelessWidget {
           title: Text('Add image'),
           onTap: () async {
             if (kIsWeb) return;
-            Navigator.push(
+            String filePath = await Navigator.push(
               context,
               new MaterialPageRoute(
                 builder: (context) => ImageSelectPage(),
               ),
             );
+            print(filePath);
+            context
+                .read<RequestFormBloc>()
+                .add(RequestFormEvent.uploadImage(filePath));
           },
         ),
         _Spacing(),
@@ -287,7 +293,20 @@ class RequestForm extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
+        BlocBuilder<RequestFormBloc, RequestFormState>(
+          buildWhen: (old, next) => next.maybeMap(
+            imagesChanged: (_) => true,
+            orElse: () => false,
+          ),
+          builder: (context, state) =>
+              state.req.attachments != null && state.req.attachments.length != 0
+                  ? ImagePreviewTile(
+                      urls: state.req.attachments.values.toList(),
+                      onRemove: (url) => print('${url} removed'),
+                    )
+                  : SizedBox(),
+        )
       ],
     );
   }

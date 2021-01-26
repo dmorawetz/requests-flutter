@@ -33,7 +33,7 @@ class CreationPage extends StatelessWidget {
                 onPressed: () {
                   BlocProvider.of<RequestFormBloc>(context)
                       .add(RequestFormEvent.save());
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 },
                 tooltip: 'Save',
               ),
