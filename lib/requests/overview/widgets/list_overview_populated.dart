@@ -121,6 +121,7 @@ class ListOverviewPopulated extends StatelessWidget {
             groupBy: (elem) => groupName(elem.priority),
             groupComparator: (a, b) =>
                 priorities.indexOf(a) - priorities.indexOf(b),
+            itemComparator: (a, b) => b.dueDate.daysLeft - a.dueDate.daysLeft,
             order: GroupedListOrder.DESC,
             groupSeparatorBuilder: (String group) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -156,8 +157,7 @@ class ListOverviewPopulated extends StatelessWidget {
               ),
             ),
             itemBuilder: (context, request) {
-              final daysLeft =
-                  request.dueDate.difference(DateTime.now()).inDays;
+              final daysLeft = request.dueDate.daysLeft;
               return Dismissible(
                 key: ValueKey(request),
                 onDismissed: (direction) {
@@ -283,4 +283,8 @@ class ListOverviewPopulated extends StatelessWidget {
 
   String groupName(Priority priority) =>
       priority.toString().replaceAll("Priority.", "").toUpperCase();
+}
+
+extension on DateTime {
+  int get daysLeft => this.difference(DateTime.now()).inDays;
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
@@ -194,19 +196,21 @@ class _RequestDetailPageState extends State<RequestDetailPage> {
               leading: Icon(Icons.timer),
               title: Text("${widget.request.timeEstimation} h est."),
             ),
-          ListTile(
-            leading: Icon(Icons.mic),
-            title: Row(
-              children: [
-                Icon(Icons.play_arrow_rounded),
-                Slider(
-                  value: 0,
-                  onChanged: (_) {},
-                ),
-              ],
+          if (Random().nextDouble() > 0.8)
+            ListTile(
+              leading: Icon(Icons.mic),
+              title: Row(
+                children: [
+                  Icon(Icons.play_arrow_rounded),
+                  Slider(
+                    value: 0,
+                    onChanged: (_) {},
+                  ),
+                ],
+              ),
             ),
-          ),
-          if (widget.request.attachments != null)
+          if (widget.request.attachments != null &&
+              widget.request.attachments.length != 0)
             ImagePreviewTile(
               urls: widget.request.attachments.map((e) => e.url).toList(),
             )

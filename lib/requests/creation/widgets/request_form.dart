@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:record_mp3/record_mp3.dart';
 import 'package:requests/common/widgets/image_preview_tile.dart';
 import 'package:requests/common/widgets/radio_list_dialog.dart';
 import 'package:requests/data/graphql/graphql_api.dart';
@@ -13,11 +18,19 @@ import 'package:requests/requests/creation/bloc/request_form_state.dart';
 import 'package:requests/requests/creation/creation_success_web_page.dart';
 import 'package:requests/requests/creation/image_select_page.dart';
 
-class RequestForm extends StatelessWidget {
-  final TextEditingController dateController = TextEditingController();
+class RequestForm extends StatefulWidget {
   final bool isEdit;
 
   RequestForm({Key key, this.isEdit = false}) : super(key: key);
+
+  @override
+  _RequestFormState createState() => _RequestFormState();
+}
+
+class _RequestFormState extends State<RequestForm> {
+  final TextEditingController dateController = TextEditingController();
+  bool isRecording = false;
+  bool audioRecorded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +48,7 @@ class RequestForm extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Image.asset(
-                  isEdit
+                  widget.isEdit
                       ? "assets/edit-request-background.png"
                       : "assets/new-request-background.png",
                   width: 280,
@@ -46,7 +59,9 @@ class RequestForm extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: kIsWeb ? mq.size.width / 2 - 100 : 98, top: 98),
               child: Text(
-                isEdit ? 'Change\nyour\nrequest' : 'Launch a\nnew\nrequest',
+                widget.isEdit
+                    ? 'Change\nyour\nrequest'
+                    : 'Launch a\nnew\nrequest',
                 style: Theme.of(context).textTheme.headline1.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -254,9 +269,54 @@ class RequestForm extends StatelessWidget {
         _Spacing(),
         ListTile(
           leading: Icon(Icons.mic),
-          title: Text('Add audio'),
-          onTap: () {
+          title: Text(
+            isRecording
+                ? 'Recording ...'
+                : audioRecorded
+                    ? 'Delete audio'
+                    : 'Add audio',
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
+                color: isRecording || audioRecorded ? Colors.red : Colors.black,
+                fontSize: 16),
+          ),
+          onTap: () async {
             if (kIsWeb) return;
+
+            /*if (!(await AudioRecorder.hasPermissions)) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Microphone permission required!'),
+              ));
+            }*/
+            var tempDir = await getTemporaryDirectory();
+            var mPath = '${tempDir.path}/flutter_sound_example.mp3';
+            var outputFile = File(mPath);
+
+            if (!isRecording) {
+              if (outputFile.existsSync()) {
+                await outputFile.delete();
+              }
+              RecordMp3.instance.start(mPath, (type) {
+                // record fail callback
+                print("Record error--->$type");
+                setState(() {});
+              });
+            } else {
+              bool s = RecordMp3.instance.stop();
+              if (s) {
+                print(outputFile.existsSync());
+                print(mPath);
+
+                setState(() {
+                  audioRecorded = true;
+                });
+                /*AudioPlayer player = AudioPlayer();
+                await player.setFilePath(mPath);
+                player.play();*/
+              }
+            }
+            setState(() {
+              isRecording = !isRecording;
+            });
           },
         ),
         SizedBox(

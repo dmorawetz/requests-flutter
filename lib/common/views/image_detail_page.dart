@@ -34,6 +34,7 @@ class ImageDetailPage extends StatelessWidget {
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
             child: PhotoView(
+              enableRotation: true,
               backgroundDecoration: BoxDecoration(color: Colors.transparent),
               imageProvider: NetworkImage(url),
               heroAttributes: PhotoViewHeroAttributes(tag: url),
