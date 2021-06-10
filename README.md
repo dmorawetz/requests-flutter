@@ -2,21 +2,12 @@
 
 Stay on-top of your todos.
 
-## Run local test web server
+## Background
 
-```bash
-flutter run -d web-server --web-hostname 0.0.0.0 --dart-define=FLUTTER_WEB_USE_SKIA=true
-```
+For a university assignment a fellow student and I have created an advanced todo app. Similar to GitHub Issues, people can add items to your list. You get notified about it, can accept/decline and track the state.
 
-## Getting Started
+The main focus of this project was to experiment with Flutter, GraphQL and sensors.
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![](media/requests-overview.webp) ![](media/requests-details.webp) ![](media/requests-done.webp)
